@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Collezione · Zodiax Arena</title>
+<meta name="description" content="Tutte le carte di Zodiax Arena: 96 carte dello zodiaco, gli dèi, i dorsi personalizzati e i pacchetti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+:root{--bg:#10172B;--bg2:#0B0E35;--deep:#07060F;--gold:#E8B04B;--gold-l:#FFE7A0;--gold-s:#EBCF93;--ink:#2A1405;--text:#F3EBDD;--muted:#B9B6CF;
+--com:#CFCFDA;--rar:#7FA8FF;--epi:#D9B8FF;--leg:#FFE38A;--ult:#7AF0FF;--fuoco:#F2604A;--acqua:#6E95F0;--terra:#B7C66A;--aria:#D9CBE0;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Nunito,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:var(--gold-l)}
+h1,h2,h3{font-family:Cinzel,serif;margin:0;line-height:1.1;text-wrap:balance}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+/* intestazione: come la landing */
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 32px;
+background:linear-gradient(180deg,rgba(18,24,48,.88),rgba(10,15,34,.84));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:2px solid var(--gold);box-shadow:0 -6px 0 -5px rgba(217,185,124,.45) inset}
+.brand{display:flex;align-items:center;gap:14px}
+.brand>a:first-child img{height:52px;width:auto;display:block}
+.ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1.5px solid rgba(235,207,147,.55);border-radius:6px;font:700 14px Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--gold-s);white-space:nowrap;transition:background .2s}
+.ghost:hover{background:rgba(235,207,147,.14)}
+.ghost[aria-current=page]{background:rgba(235,207,147,.16);border-color:var(--gold);color:var(--gold-l)}
+.ghost.cta{border-color:var(--gold-s);color:var(--gold-l)}
+
+/* hero */
+.hero{position:relative;padding:112px 0 40px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 62%,rgba(255,214,107,.16),rgba(255,214,107,0) 70%),linear-gradient(180deg,#0A0F22 0%,var(--bg) 100%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.2px 1.2px at 12% 22%,#F3EBDD 50%,transparent),radial-gradient(1px 1px at 28% 12%,#FFE7A0 50%,transparent),radial-gradient(1.4px 1.4px at 71% 18%,#F3EBDD 50%,transparent),radial-gradient(1px 1px at 86% 30%,#FFE7A0 50%,transparent),radial-gradient(1.2px 1.2px at 52% 8%,#F3EBDD 50%,transparent),radial-gradient(1px 1px at 92% 64%,#F3EBDD 50%,transparent),radial-gradient(1px 1px at 6% 70%,#FFE7A0 50%,transparent);opacity:.7}
+.hero h1{position:relative;z-index:3;text-align:center;font-family:'Cinzel Decorative',Cinzel,serif;font-weight:900;font-size:clamp(34px,5.4vw,68px);color:#FFF8EC;text-shadow:0 3px 0 #05070F,0 0 30px rgba(6,9,22,.9);padding:0 16px}
+.hero .kick{position:relative;z-index:3;text-align:center;margin:14px 0 0;font:600 clamp(15px,1.6vw,19px) Cinzel,serif;letter-spacing:.06em;color:var(--gold-l)}
+.stage{position:relative;height:540px;max-width:1180px;margin:8px auto 0}
+.god{position:absolute;bottom:0;z-index:1;pointer-events:none;filter:drop-shadow(0 18px 28px rgba(0,0,0,.6))}
+.god img{display:block;height:100%;width:auto}
+.god.g1{left:2%;height:500px} .god.g2{left:19%;height:430px;bottom:34px;z-index:0;opacity:.92}
+.god.g3{right:19%;height:430px;bottom:34px;z-index:0;opacity:.92} .god.g4{right:2%;height:500px}
+.god.g2 img,.god.g3 img{filter:brightness(.82)}
+.trio{position:absolute;left:50%;bottom:24px;z-index:3;width:0;height:0}
+.trio .tilt{position:absolute;bottom:0}
+.trio .t1{width:180px;left:-250px;transform:rotate(-9deg);transform-origin:50% 100%}
+.trio .t2{width:212px;left:-106px;bottom:22px}
+.trio .t3{width:180px;left:70px;transform:rotate(9deg);transform-origin:50% 100%}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.hero .cue{position:relative;z-index:3;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:26px auto 0;padding:0 16px}
+.hero .cue a{font:700 13px Nunito,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--gold-s);border:1px solid rgba(235,207,147,.35);border-radius:99px;padding:9px 14px;background:rgba(11,14,53,.6)}
+.hero .cue a:hover{border-color:var(--gold);color:var(--gold-l)}
+
+/* sezioni */
+section{position:relative;padding:80px 0}
+.sec-head{text-align:center;margin-bottom:32px}
+.sec-head .eyebrow{display:block;font:800 12px Nunito,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sec-head h2{font-size:clamp(28px,3.4vw,44px);color:#FFF8EC}
+.sec-head p{max-width:620px;margin:12px auto 0;color:var(--muted)}
+#carte{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+#dei{background:var(--bg2)}
+#dorsi{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%)}
+#pacchetti{background:var(--bg)}
+
+/* schede rarita */
+.tabs{position:sticky;top:70px;z-index:10;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 0;margin-bottom:8px;background:linear-gradient(180deg,rgba(16,23,43,.96),rgba(16,23,43,.9));-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tabs button{--c:var(--gold-s);display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:99px;border:1.5px solid rgba(235,207,147,.3);background:rgba(11,14,53,.7);color:var(--text);font:700 14px Cinzel,serif;letter-spacing:.06em;cursor:pointer;transition:border-color .2s,background .2s}
+.tabs button .n{font:800 12px Nunito,sans-serif;color:var(--c);border:1px solid currentColor;border-radius:99px;padding:1px 7px;letter-spacing:0}
+.tabs button[aria-selected=true]{border-color:var(--c);background:rgba(42,49,88,.9);color:#FFF8EC;box-shadow:0 0 18px -6px var(--c)}
+.r-ultra{--c:var(--ult)} .r-leg{--c:var(--leg)} .r-epi{--c:var(--epi)} .r-rar{--c:var(--rar)} .r-com{--c:var(--com)}
+.panel .lead{text-align:center;color:var(--muted);margin:8px 0 26px}
+.sub{display:flex;align-items:center;gap:14px;margin:36px 0 18px;font-size:20px;color:#FFF8EC}
+.sub::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(232,176,75,.5),rgba(232,176,75,0))}
+.sub span{display:inline-flex;align-items:center;gap:10px}
+.sub em{font:800 12px Nunito,sans-serif;font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--c,var(--gold))}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px 18px}
+.grid li,.backs li{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cap{font:700 13px Nunito,sans-serif;color:var(--muted);text-align:center}
+
+/* tilt 3D */
+.tilt{--rx:0deg;--ry:0deg;--gx:50%;--gy:50%;--ga:0;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;perspective:900px;touch-action:pan-y;-webkit-tap-highlight-color:transparent}
+.tilt-in{position:relative;display:block;border-radius:5.4%/3.9%;transform:rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s,1));transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s;box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.tilt-in img{display:block;width:100%;height:auto;border-radius:inherit}
+.tilt-in::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:var(--ga);transition:opacity .3s;mix-blend-mode:soft-light;
+background:radial-gradient(circle at var(--gx) var(--gy),rgba(255,255,255,.75) 0%,rgba(255,255,255,.15) 30%,rgba(255,255,255,0) 60%)}
+.tilt.on .tilt-in{--s:1.05;transition:transform .08s linear,box-shadow .3s;box-shadow:0 26px 44px rgba(0,0,0,.6),0 0 30px -8px rgba(255,214,107,.45)}
+.tilt.pack .tilt-in{border-radius:2%;box-shadow:none;filter:drop-shadow(0 14px 22px rgba(0,0,0,.55))}
+.tilt.pack .tilt-in img{border-radius:0}
+.tilt.pack.on .tilt-in{box-shadow:none;filter:drop-shadow(0 26px 34px rgba(0,0,0,.6))}
+.tilt.pack .tilt-in::after{border-radius:2%}
+
+/* dei */
+.gods{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;max-width:1040px}
+.gods li{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.gname{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font:800 20px Cinzel,serif;letter-spacing:.08em;color:#FFF8EC}
+.gtxt{font-size:14px;color:var(--muted);max-width:220px}
+.el-fuoco .gname{color:var(--fuoco)} .el-acqua .gname{color:var(--acqua)} .el-terra .gname{color:var(--terra)} .el-aria .gname{color:var(--aria)}
+.ade{margin-top:72px;padding:56px 32px;border-radius:24px;background:radial-gradient(ellipse 60% 70% at 30% 50%,rgba(181,63,42,.22),rgba(181,63,42,0) 70%),var(--deep);border:1px solid rgba(232,176,75,.25);box-shadow:inset 0 0 80px rgba(0,0,0,.7)}
+.ade-in{display:grid;grid-template-columns:260px 1fr;gap:48px;align-items:center;max-width:860px;margin:0 auto}
+.lock{display:inline-flex;align-items:center;gap:8px;font:800 12px Nunito,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#FF9C86;border:1px solid rgba(255,156,134,.5);border-radius:99px;padding:6px 12px}
+.ade h3{margin:16px 0 10px;font-size:clamp(28px,3vw,40px);color:#FFF8EC}
+.ade p{margin:0 0 10px;color:var(--muted)}
+
+/* dorsi */
+.std{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center;max-width:860px;margin:0 auto 24px}
+.std h3{font-size:28px;color:#FFF8EC;margin-bottom:10px} .std p{margin:0 0 10px;color:var(--muted)}
+.belems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 40px}
+.backs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.el-fuoco .sub span{color:var(--fuoco)} .el-terra .sub span{color:var(--terra)} .el-aria .sub span{color:var(--aria)} .el-acqua .sub span{color:var(--acqua)}
+
+/* pacchetti */
+.packs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px}
+.packs li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.packs h3{margin-top:16px;font-size:20px;color:#FFF8EC}
+.packs .meta{margin:0;font:700 14px Nunito,sans-serif;color:var(--gold-l)}
+.mix{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:8px 0 4px}
+.mix span{font:800 13px Nunito,sans-serif;padding:3px 9px;border-radius:99px;border:1px solid currentColor;background:rgba(11,14,53,.8)}
+.s-c{color:var(--com)} .s-r{color:var(--rar)} .s-e{color:var(--epi)} .s-s{color:var(--leg)} .s-a{color:var(--ult)}
+.packs .desc{margin:0;font-size:14px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:36px auto 0;font-size:14px;color:var(--muted);max-width:820px;text-align:center}
+.legend b{font-weight:800}
+
+footer{padding:36px 32px 48px;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid rgba(232,176,75,.25)}
+footer nav{display:flex;gap:20px;justify-content:center;margin-bottom:10px}
+footer a{color:var(--gold-s);text-decoration:none;font:700 13px Cinzel,serif;letter-spacing:.12em;text-transform:uppercase}
+
+/* ingrandimento */
+.lb{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(5,7,15,.92);animation:fade .2s both}
+.lb[hidden]{display:none}
+.lb .tilt{width:min(420px,84vw);touch-action:none;cursor:default}
+.lb .tilt.wide{width:min(460px,86vw)}
+.lbx{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--gold);background:var(--bg2);color:var(--gold-l);font-size:22px;cursor:pointer}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+@media (max-width:980px){
+.grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.packs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gods{grid-template-columns:repeat(2,minmax(0,1fr));max-width:560px}
+.stage{height:440px} .god.g1,.god.g4{height:400px} .god.g2,.god.g3{height:340px}
+.trio .t1{width:140px;left:-196px} .trio .t2{width:166px;left:-83px} .trio .t3{width:140px;left:56px}
+}
+@media (max-width:700px){
+.wrap{padding:0 16px}
+header{padding:6px 12px}
+.brand{gap:8px} .brand>a:first-child img{height:38px}
+.ghost{min-height:40px;padding:0 10px;font-size:11px;letter-spacing:.06em}
+.hero{padding-top:92px}
+.stage{height:300px;margin-top:0}
+.god.g1{left:-8%;height:270px} .god.g4{right:-8%;height:270px}
+.god.g2{left:10%;height:220px;bottom:40px} .god.g3{right:10%;height:220px;bottom:40px}
+.trio{bottom:16px}
+.trio .t1{width:100px;left:-136px} .trio .t2{width:118px;left:-59px;bottom:14px} .trio .t3{width:100px;left:36px}
+section{padding:56px 0}
+.tabs{top:56px;justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;margin:0 -16px 8px;padding:10px 16px;scrollbar-width:none}
+.tabs button{flex:none;font-size:13px;padding:0 12px}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 10px}
+.cap{font-size:12px}
+.gods{gap:24px 14px} .gname{font-size:17px} .gtxt{font-size:13px}
+.ade{margin-top:56px;padding:36px 20px} .ade-in{grid-template-columns:1fr;gap:24px;justify-items:center;text-align:center} .ade-in .tilt{max-width:230px}
+.std{grid-template-columns:1fr;gap:20px;text-align:center;justify-items:center} .std .tilt{max-width:250px}
+.belems{grid-template-columns:1fr}
+.backs{gap:10px}
+.packs{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+.packs h3{font-size:17px}
+}
+@media (max-width:380px){.ghost.cta{display:none}}
+@media (prefers-reduced-motion:reduce){.float{animation:none}.tilt-in{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<div class="brand">
+<a href="index.html" aria-label="Zodiax Arena, torna alla home"><img src="img/za-logo-compatto.webp" alt="Zodiax Arena"></a>
+<a class="ghost" href="regolamento.html">Regolamento</a>
+<a class="ghost" href="collezione.html" aria-current="page">Collezione</a>
+</div>
+<a class="ghost cta" href="index.html#iscriviti">Iscriviti</a>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="titolo">
+<h1 id="titolo">Tutte le carte dello zodiaco</h1>
+<p class="kick">96 carte · 5 dèi · 13 dorsi · 5 pacchetti</p>
+<div class="stage" aria-hidden="true">
+<div class="god g1 float" style="animation-delay:-1s"><img src="img/dei/efesto-scontornato.webp" alt=""></div>
+<div class="god g2 float" style="animation-delay:-3.5s"><img src="img/dei/demetra-scontornato.webp" alt=""></div>
+<div class="god g3 float" style="animation-delay:-2.2s"><img src="img/dei/era-scontornato.webp" alt=""></div>
+<div class="god g4 float" style="animation-delay:-4.6s"><img src="img/dei/poseidone-scontornato.webp" alt=""></div>
+<div class="trio">
+<span class="tilt t1" data-free><span class="tilt-in"><img src="img/za-023-luna-acquario.webp" alt=""></span></span>
+<span class="tilt t3" data-free><span class="tilt-in"><img src="img/za-asc-04-ascendente-cancro.webp" alt=""></span></span>
+<span class="tilt t2" data-free><span class="tilt-in"><img src="img/za-010-sole-capricorno.webp" alt=""></span></span>
+</div>
+</div>
+<nav class="cue" aria-label="Sezioni della collezione">
+<a href="#carte">Le carte</a><a href="#dei">Gli dèi</a><a href="#dorsi">I dorsi</a><a href="#pacchetti">I pacchetti</a>
+</nav>
+</section>
+
+<section id="carte" aria-labelledby="h-carte">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Casa I · il set di lancio</span><h2 id="h-carte">Le carte</h2>
+<p>Ogni carta è un pianeta in un segno: 7 pianeti per 12 segni, più i 12 Ascendenti. Tocca una carta per vederla da vicino.</p></div>
+<div class="tabs" role="tablist" aria-label="Rarità"><button role="tab" id="tab-asc" aria-controls="pan-asc" aria-selected="true" tabindex="0" class="r-ultra">Ascendenti<span class="n">12</span></button><button role="tab" id="tab-leg" aria-controls="pan-leg" aria-selected="false" tabindex="-1" class="r-leg">Leggendarie<span class="n">12</span></button><button role="tab" id="tab-epi" aria-controls="pan-epi" aria-selected="false" tabindex="-1" class="r-epi">Epiche<span class="n">24</span></button><button role="tab" id="tab-rar" aria-controls="pan-rar" aria-selected="false" tabindex="-1" class="r-rar">Rare<span class="n">24</span></button><button role="tab" id="tab-com" aria-controls="pan-com" aria-selected="false" tabindex="-1" class="r-com">Comuni<span class="n">24</span></button></div>
+<div role="tabpanel" id="pan-asc" aria-labelledby="tab-asc" class="panel r-ultra"><p class="lead">Non combattono: danno +1 ATK alle carte del loro segno nel mazzo.</p><h3 class="sub"><span>Ascendenti</span><em>Ultra-rare</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-asc-01-ascendente-ariete.webp" aria-label="Ingrandisci Ascendente Ariete"><span class="tilt-in"><img src="img/za-asc-01-ascendente-ariete.webp" alt="Ascendente Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-02-ascendente-toro.webp" aria-label="Ingrandisci Ascendente Toro"><span class="tilt-in"><img src="img/za-asc-02-ascendente-toro.webp" alt="Ascendente Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-03-ascendente-gemelli.webp" aria-label="Ingrandisci Ascendente Gemelli"><span class="tilt-in"><img src="img/za-asc-03-ascendente-gemelli.webp" alt="Ascendente Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-04-ascendente-cancro.webp" aria-label="Ingrandisci Ascendente Cancro"><span class="tilt-in"><img src="img/za-asc-04-ascendente-cancro.webp" alt="Ascendente Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-05-ascendente-leone.webp" aria-label="Ingrandisci Ascendente Leone"><span class="tilt-in"><img src="img/za-asc-05-ascendente-leone.webp" alt="Ascendente Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-06-ascendente-vergine.webp" aria-label="Ingrandisci Ascendente Vergine"><span class="tilt-in"><img src="img/za-asc-06-ascendente-vergine.webp" alt="Ascendente Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-07-ascendente-bilancia.webp" aria-label="Ingrandisci Ascendente Bilancia"><span class="tilt-in"><img src="img/za-asc-07-ascendente-bilancia.webp" alt="Ascendente Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-08-ascendente-scorpione.webp" aria-label="Ingrandisci Ascendente Scorpione"><span class="tilt-in"><img src="img/za-asc-08-ascendente-scorpione.webp" alt="Ascendente Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-09-ascendente-sagittario.webp" aria-label="Ingrandisci Ascendente Sagittario"><span class="tilt-in"><img src="img/za-asc-09-ascendente-sagittario.webp" alt="Ascendente Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-10-ascendente-capricorno.webp" aria-label="Ingrandisci Ascendente Capricorno"><span class="tilt-in"><img src="img/za-asc-10-ascendente-capricorno.webp" alt="Ascendente Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-11-ascendente-acquario.webp" aria-label="Ingrandisci Ascendente Acquario"><span class="tilt-in"><img src="img/za-asc-11-ascendente-acquario.webp" alt="Ascendente Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-asc-12-ascendente-pesci.webp" aria-label="Ingrandisci Ascendente Pesci"><span class="tilt-in"><img src="img/za-asc-12-ascendente-pesci.webp" alt="Ascendente Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul></div><div role="tabpanel" id="pan-leg" aria-labelledby="tab-leg" class="panel r-leg" hidden><p class="lead">Il Sole è la carta più forte del mazzo: alla registrazione ricevi quello del tuo segno.</p><h3 class="sub"><span>Sole</span><em>Leggendarie</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-001-sole-ariete.webp" aria-label="Ingrandisci Sole in Ariete"><span class="tilt-in"><img src="img/za-001-sole-ariete.webp" alt="Sole in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-002-sole-toro.webp" aria-label="Ingrandisci Sole in Toro"><span class="tilt-in"><img src="img/za-002-sole-toro.webp" alt="Sole in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-003-sole-gemelli.webp" aria-label="Ingrandisci Sole in Gemelli"><span class="tilt-in"><img src="img/za-003-sole-gemelli.webp" alt="Sole in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-004-sole-cancro.webp" aria-label="Ingrandisci Sole in Cancro"><span class="tilt-in"><img src="img/za-004-sole-cancro.webp" alt="Sole in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-005-sole-leone.webp" aria-label="Ingrandisci Sole in Leone"><span class="tilt-in"><img src="img/za-005-sole-leone.webp" alt="Sole in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-006-sole-vergine.webp" aria-label="Ingrandisci Sole in Vergine"><span class="tilt-in"><img src="img/za-006-sole-vergine.webp" alt="Sole in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-007-sole-bilancia.webp" aria-label="Ingrandisci Sole in Bilancia"><span class="tilt-in"><img src="img/za-007-sole-bilancia.webp" alt="Sole in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-008-sole-scorpione.webp" aria-label="Ingrandisci Sole in Scorpione"><span class="tilt-in"><img src="img/za-008-sole-scorpione.webp" alt="Sole in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-009-sole-sagittario.webp" aria-label="Ingrandisci Sole in Sagittario"><span class="tilt-in"><img src="img/za-009-sole-sagittario.webp" alt="Sole in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-010-sole-capricorno.webp" aria-label="Ingrandisci Sole in Capricorno"><span class="tilt-in"><img src="img/za-010-sole-capricorno.webp" alt="Sole in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-011-sole-acquario.webp" aria-label="Ingrandisci Sole in Acquario"><span class="tilt-in"><img src="img/za-011-sole-acquario.webp" alt="Sole in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-012-sole-pesci.webp" aria-label="Ingrandisci Sole in Pesci"><span class="tilt-in"><img src="img/za-012-sole-pesci.webp" alt="Sole in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul></div><div role="tabpanel" id="pan-epi" aria-labelledby="tab-epi" class="panel r-epi" hidden><p class="lead">Marte attacca, la Luna difende.</p><h3 class="sub"><span>Marte</span><em>Epiche</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-025-marte-ariete.webp" aria-label="Ingrandisci Marte in Ariete"><span class="tilt-in"><img src="img/za-025-marte-ariete.webp" alt="Marte in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-026-marte-toro.webp" aria-label="Ingrandisci Marte in Toro"><span class="tilt-in"><img src="img/za-026-marte-toro.webp" alt="Marte in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-027-marte-gemelli.webp" aria-label="Ingrandisci Marte in Gemelli"><span class="tilt-in"><img src="img/za-027-marte-gemelli.webp" alt="Marte in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-028-marte-cancro.webp" aria-label="Ingrandisci Marte in Cancro"><span class="tilt-in"><img src="img/za-028-marte-cancro.webp" alt="Marte in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-029-marte-leone.webp" aria-label="Ingrandisci Marte in Leone"><span class="tilt-in"><img src="img/za-029-marte-leone.webp" alt="Marte in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-030-marte-vergine.webp" aria-label="Ingrandisci Marte in Vergine"><span class="tilt-in"><img src="img/za-030-marte-vergine.webp" alt="Marte in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-031-marte-bilancia.webp" aria-label="Ingrandisci Marte in Bilancia"><span class="tilt-in"><img src="img/za-031-marte-bilancia.webp" alt="Marte in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-032-marte-scorpione.webp" aria-label="Ingrandisci Marte in Scorpione"><span class="tilt-in"><img src="img/za-032-marte-scorpione.webp" alt="Marte in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-033-marte-sagittario.webp" aria-label="Ingrandisci Marte in Sagittario"><span class="tilt-in"><img src="img/za-033-marte-sagittario.webp" alt="Marte in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-034-marte-capricorno.webp" aria-label="Ingrandisci Marte in Capricorno"><span class="tilt-in"><img src="img/za-034-marte-capricorno.webp" alt="Marte in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-035-marte-acquario.webp" aria-label="Ingrandisci Marte in Acquario"><span class="tilt-in"><img src="img/za-035-marte-acquario.webp" alt="Marte in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-036-marte-pesci.webp" aria-label="Ingrandisci Marte in Pesci"><span class="tilt-in"><img src="img/za-036-marte-pesci.webp" alt="Marte in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul><h3 class="sub"><span>Luna</span><em>Epiche</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-013-luna-ariete.webp" aria-label="Ingrandisci Luna in Ariete"><span class="tilt-in"><img src="img/za-013-luna-ariete.webp" alt="Luna in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-014-luna-toro.webp" aria-label="Ingrandisci Luna in Toro"><span class="tilt-in"><img src="img/za-014-luna-toro.webp" alt="Luna in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-015-luna-gemelli.webp" aria-label="Ingrandisci Luna in Gemelli"><span class="tilt-in"><img src="img/za-015-luna-gemelli.webp" alt="Luna in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-016-luna-cancro.webp" aria-label="Ingrandisci Luna in Cancro"><span class="tilt-in"><img src="img/za-016-luna-cancro.webp" alt="Luna in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-017-luna-leone.webp" aria-label="Ingrandisci Luna in Leone"><span class="tilt-in"><img src="img/za-017-luna-leone.webp" alt="Luna in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-018-luna-vergine.webp" aria-label="Ingrandisci Luna in Vergine"><span class="tilt-in"><img src="img/za-018-luna-vergine.webp" alt="Luna in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-019-luna-bilancia.webp" aria-label="Ingrandisci Luna in Bilancia"><span class="tilt-in"><img src="img/za-019-luna-bilancia.webp" alt="Luna in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-020-luna-scorpione.webp" aria-label="Ingrandisci Luna in Scorpione"><span class="tilt-in"><img src="img/za-020-luna-scorpione.webp" alt="Luna in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-021-luna-sagittario.webp" aria-label="Ingrandisci Luna in Sagittario"><span class="tilt-in"><img src="img/za-021-luna-sagittario.webp" alt="Luna in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-022-luna-capricorno.webp" aria-label="Ingrandisci Luna in Capricorno"><span class="tilt-in"><img src="img/za-022-luna-capricorno.webp" alt="Luna in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-023-luna-acquario.webp" aria-label="Ingrandisci Luna in Acquario"><span class="tilt-in"><img src="img/za-023-luna-acquario.webp" alt="Luna in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-024-luna-pesci.webp" aria-label="Ingrandisci Luna in Pesci"><span class="tilt-in"><img src="img/za-024-luna-pesci.webp" alt="Luna in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul></div><div role="tabpanel" id="pan-rar" aria-labelledby="tab-rar" class="panel r-rar" hidden><p class="lead">Giove spinge l'attacco, Saturno regge i colpi.</p><h3 class="sub"><span>Giove</span><em>Rare</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-037-giove-ariete.webp" aria-label="Ingrandisci Giove in Ariete"><span class="tilt-in"><img src="img/za-037-giove-ariete.webp" alt="Giove in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-038-giove-toro.webp" aria-label="Ingrandisci Giove in Toro"><span class="tilt-in"><img src="img/za-038-giove-toro.webp" alt="Giove in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-039-giove-gemelli.webp" aria-label="Ingrandisci Giove in Gemelli"><span class="tilt-in"><img src="img/za-039-giove-gemelli.webp" alt="Giove in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-040-giove-cancro.webp" aria-label="Ingrandisci Giove in Cancro"><span class="tilt-in"><img src="img/za-040-giove-cancro.webp" alt="Giove in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-041-giove-leone.webp" aria-label="Ingrandisci Giove in Leone"><span class="tilt-in"><img src="img/za-041-giove-leone.webp" alt="Giove in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-042-giove-vergine.webp" aria-label="Ingrandisci Giove in Vergine"><span class="tilt-in"><img src="img/za-042-giove-vergine.webp" alt="Giove in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-043-giove-bilancia.webp" aria-label="Ingrandisci Giove in Bilancia"><span class="tilt-in"><img src="img/za-043-giove-bilancia.webp" alt="Giove in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-044-giove-scorpione.webp" aria-label="Ingrandisci Giove in Scorpione"><span class="tilt-in"><img src="img/za-044-giove-scorpione.webp" alt="Giove in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-045-giove-sagittario.webp" aria-label="Ingrandisci Giove in Sagittario"><span class="tilt-in"><img src="img/za-045-giove-sagittario.webp" alt="Giove in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-046-giove-capricorno.webp" aria-label="Ingrandisci Giove in Capricorno"><span class="tilt-in"><img src="img/za-046-giove-capricorno.webp" alt="Giove in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-047-giove-acquario.webp" aria-label="Ingrandisci Giove in Acquario"><span class="tilt-in"><img src="img/za-047-giove-acquario.webp" alt="Giove in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-048-giove-pesci.webp" aria-label="Ingrandisci Giove in Pesci"><span class="tilt-in"><img src="img/za-048-giove-pesci.webp" alt="Giove in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul><h3 class="sub"><span>Saturno</span><em>Rare</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-049-saturno-ariete.webp" aria-label="Ingrandisci Saturno in Ariete"><span class="tilt-in"><img src="img/za-049-saturno-ariete.webp" alt="Saturno in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-050-saturno-toro.webp" aria-label="Ingrandisci Saturno in Toro"><span class="tilt-in"><img src="img/za-050-saturno-toro.webp" alt="Saturno in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-051-saturno-gemelli.webp" aria-label="Ingrandisci Saturno in Gemelli"><span class="tilt-in"><img src="img/za-051-saturno-gemelli.webp" alt="Saturno in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-052-saturno-cancro.webp" aria-label="Ingrandisci Saturno in Cancro"><span class="tilt-in"><img src="img/za-052-saturno-cancro.webp" alt="Saturno in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-053-saturno-leone.webp" aria-label="Ingrandisci Saturno in Leone"><span class="tilt-in"><img src="img/za-053-saturno-leone.webp" alt="Saturno in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-054-saturno-vergine.webp" aria-label="Ingrandisci Saturno in Vergine"><span class="tilt-in"><img src="img/za-054-saturno-vergine.webp" alt="Saturno in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-055-saturno-bilancia.webp" aria-label="Ingrandisci Saturno in Bilancia"><span class="tilt-in"><img src="img/za-055-saturno-bilancia.webp" alt="Saturno in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-056-saturno-scorpione.webp" aria-label="Ingrandisci Saturno in Scorpione"><span class="tilt-in"><img src="img/za-056-saturno-scorpione.webp" alt="Saturno in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-057-saturno-sagittario.webp" aria-label="Ingrandisci Saturno in Sagittario"><span class="tilt-in"><img src="img/za-057-saturno-sagittario.webp" alt="Saturno in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-058-saturno-capricorno.webp" aria-label="Ingrandisci Saturno in Capricorno"><span class="tilt-in"><img src="img/za-058-saturno-capricorno.webp" alt="Saturno in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-059-saturno-acquario.webp" aria-label="Ingrandisci Saturno in Acquario"><span class="tilt-in"><img src="img/za-059-saturno-acquario.webp" alt="Saturno in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-060-saturno-pesci.webp" aria-label="Ingrandisci Saturno in Pesci"><span class="tilt-in"><img src="img/za-060-saturno-pesci.webp" alt="Saturno in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul></div><div role="tabpanel" id="pan-com" aria-labelledby="tab-com" class="panel r-com" hidden><p class="lead">Le più facili da trovare: il segno conta più del pianeta.</p><h3 class="sub"><span>Mercurio</span><em>Comuni</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-061-mercurio-ariete.webp" aria-label="Ingrandisci Mercurio in Ariete"><span class="tilt-in"><img src="img/za-061-mercurio-ariete.webp" alt="Mercurio in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-062-mercurio-toro.webp" aria-label="Ingrandisci Mercurio in Toro"><span class="tilt-in"><img src="img/za-062-mercurio-toro.webp" alt="Mercurio in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-063-mercurio-gemelli.webp" aria-label="Ingrandisci Mercurio in Gemelli"><span class="tilt-in"><img src="img/za-063-mercurio-gemelli.webp" alt="Mercurio in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-064-mercurio-cancro.webp" aria-label="Ingrandisci Mercurio in Cancro"><span class="tilt-in"><img src="img/za-064-mercurio-cancro.webp" alt="Mercurio in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-065-mercurio-leone.webp" aria-label="Ingrandisci Mercurio in Leone"><span class="tilt-in"><img src="img/za-065-mercurio-leone.webp" alt="Mercurio in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-066-mercurio-vergine.webp" aria-label="Ingrandisci Mercurio in Vergine"><span class="tilt-in"><img src="img/za-066-mercurio-vergine.webp" alt="Mercurio in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-067-mercurio-bilancia.webp" aria-label="Ingrandisci Mercurio in Bilancia"><span class="tilt-in"><img src="img/za-067-mercurio-bilancia.webp" alt="Mercurio in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-068-mercurio-scorpione.webp" aria-label="Ingrandisci Mercurio in Scorpione"><span class="tilt-in"><img src="img/za-068-mercurio-scorpione.webp" alt="Mercurio in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-069-mercurio-sagittario.webp" aria-label="Ingrandisci Mercurio in Sagittario"><span class="tilt-in"><img src="img/za-069-mercurio-sagittario.webp" alt="Mercurio in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-070-mercurio-capricorno.webp" aria-label="Ingrandisci Mercurio in Capricorno"><span class="tilt-in"><img src="img/za-070-mercurio-capricorno.webp" alt="Mercurio in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-071-mercurio-acquario.webp" aria-label="Ingrandisci Mercurio in Acquario"><span class="tilt-in"><img src="img/za-071-mercurio-acquario.webp" alt="Mercurio in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-072-mercurio-pesci.webp" aria-label="Ingrandisci Mercurio in Pesci"><span class="tilt-in"><img src="img/za-072-mercurio-pesci.webp" alt="Mercurio in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul><h3 class="sub"><span>Venere</span><em>Comuni</em></h3><ul class="grid"><li><button class="tilt " type="button" data-zoom="img/za-073-venere-ariete.webp" aria-label="Ingrandisci Venere in Ariete"><span class="tilt-in"><img src="img/za-073-venere-ariete.webp" alt="Venere in Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/za-074-venere-toro.webp" aria-label="Ingrandisci Venere in Toro"><span class="tilt-in"><img src="img/za-074-venere-toro.webp" alt="Venere in Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/za-075-venere-gemelli.webp" aria-label="Ingrandisci Venere in Gemelli"><span class="tilt-in"><img src="img/za-075-venere-gemelli.webp" alt="Venere in Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/za-076-venere-cancro.webp" aria-label="Ingrandisci Venere in Cancro"><span class="tilt-in"><img src="img/za-076-venere-cancro.webp" alt="Venere in Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/za-077-venere-leone.webp" aria-label="Ingrandisci Venere in Leone"><span class="tilt-in"><img src="img/za-077-venere-leone.webp" alt="Venere in Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/za-078-venere-vergine.webp" aria-label="Ingrandisci Venere in Vergine"><span class="tilt-in"><img src="img/za-078-venere-vergine.webp" alt="Venere in Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/za-079-venere-bilancia.webp" aria-label="Ingrandisci Venere in Bilancia"><span class="tilt-in"><img src="img/za-079-venere-bilancia.webp" alt="Venere in Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/za-080-venere-scorpione.webp" aria-label="Ingrandisci Venere in Scorpione"><span class="tilt-in"><img src="img/za-080-venere-scorpione.webp" alt="Venere in Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/za-081-venere-sagittario.webp" aria-label="Ingrandisci Venere in Sagittario"><span class="tilt-in"><img src="img/za-081-venere-sagittario.webp" alt="Venere in Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li><li><button class="tilt " type="button" data-zoom="img/za-082-venere-capricorno.webp" aria-label="Ingrandisci Venere in Capricorno"><span class="tilt-in"><img src="img/za-082-venere-capricorno.webp" alt="Venere in Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li><li><button class="tilt " type="button" data-zoom="img/za-083-venere-acquario.webp" aria-label="Ingrandisci Venere in Acquario"><span class="tilt-in"><img src="img/za-083-venere-acquario.webp" alt="Venere in Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li><li><button class="tilt " type="button" data-zoom="img/za-084-venere-pesci.webp" aria-label="Ingrandisci Venere in Pesci"><span class="tilt-in"><img src="img/za-084-venere-pesci.webp" alt="Venere in Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul></div>
+</div>
+</section>
+
+<section id="dei" aria-labelledby="h-dei">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Le Fazioni</span><h2 id="h-dei">Gli dèi</h2>
+<p>Quattro dèi si contendono il trono di Zeus. Quello che scegli potenzia le creature del suo elemento, in tutti i tuoi mazzi.</p></div>
+<ul class="gods"><li class="el-fuoco"><button class="tilt " type="button" data-zoom="img/za-dio-efesto.webp" aria-label="Ingrandisci Carta di Efesto"><span class="tilt-in"><img src="img/za-dio-efesto.webp" alt="Carta di Efesto" loading="lazy" decoding="async"></span></button><span class="gname"><img src="img/elementi/fuoco.webp" alt="" width="28" height="28">Efesto</span><span class="gtxt">+2 ATK alle tue creature di Fuoco</span></li><li class="el-acqua"><button class="tilt " type="button" data-zoom="img/za-dio-poseidone.webp" aria-label="Ingrandisci Carta di Poseidone"><span class="tilt-in"><img src="img/za-dio-poseidone.webp" alt="Carta di Poseidone" loading="lazy" decoding="async"></span></button><span class="gname"><img src="img/elementi/acqua.webp" alt="" width="28" height="28">Poseidone</span><span class="gtxt">+3 DEF alle tue creature d'Acqua</span></li><li class="el-terra"><button class="tilt " type="button" data-zoom="img/za-dio-demetra.webp" aria-label="Ingrandisci Carta di Demetra"><span class="tilt-in"><img src="img/za-dio-demetra.webp" alt="Carta di Demetra" loading="lazy" decoding="async"></span></button><span class="gname"><img src="img/elementi/terra.webp" alt="" width="28" height="28">Demetra</span><span class="gtxt">+1 ATK e +1 DEF alle tue creature di Terra</span></li><li class="el-aria"><button class="tilt " type="button" data-zoom="img/za-dio-era.webp" aria-label="Ingrandisci Carta di Era"><span class="tilt-in"><img src="img/za-dio-era.webp" alt="Carta di Era" loading="lazy" decoding="async"></span></button><span class="gname"><img src="img/elementi/aria.webp" alt="" width="28" height="28">Era</span><span class="gtxt">+1 ATK e +1 DEF alle tue creature d'Aria</span></li></ul>
+<div class="ade">
+<div class="ade-in">
+<button class="tilt " type="button" data-zoom="img/za-dio-ade.webp" aria-label="Ingrandisci Carta di Ade"><span class="tilt-in"><img src="img/za-dio-ade.webp" alt="Carta di Ade" loading="lazy" decoding="async"></span></button>
+<div>
+<span class="lock"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Da sbloccare · fase 2</span>
+<h3>Ade, signore dei morti</h3>
+<p>Il quinto dio non ha un elemento: regna su chi cade. +1 PV per ogni creatura avversaria che muore, fino ai tuoi PV iniziali.</p>
+<p>Arriva con la fase 2 del gioco. Per ora aspetta nell'ombra.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="dorsi" aria-labelledby="h-dorsi">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Cosmetici</span><h2 id="h-dorsi">I dorsi</h2></div>
+<div class="std">
+<button class="tilt " type="button" data-zoom="img/dorsi/dorso-standard.webp" aria-label="Ingrandisci Dorso standard"><span class="tilt-in"><img src="img/dorsi/dorso-standard.webp" alt="Dorso standard" loading="lazy" decoding="async"></span></button>
+<div><h3>Dorso standard</h3><p>Il dorso di tutte le carte: blu notte, motivo shippō e il sole al centro.</p>
+<p>I dorsi dei segni sono cosmetici: si comprano con i crediti e non cambiano nulla in partita.</p></div>
+</div>
+<div class="belems"><div class="belem el-fuoco"><h3 class="sub"><span><img src="img/elementi/fuoco.webp" alt="" width="30" height="30">Fuoco</span></h3><ul class="backs"><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-ariete.webp" aria-label="Ingrandisci Dorso Ariete"><span class="tilt-in"><img src="img/dorsi/dorso-ariete.webp" alt="Dorso Ariete" loading="lazy" decoding="async"></span></button><span class="cap">♈︎ Ariete</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-leone.webp" aria-label="Ingrandisci Dorso Leone"><span class="tilt-in"><img src="img/dorsi/dorso-leone.webp" alt="Dorso Leone" loading="lazy" decoding="async"></span></button><span class="cap">♌︎ Leone</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-sagittario.webp" aria-label="Ingrandisci Dorso Sagittario"><span class="tilt-in"><img src="img/dorsi/dorso-sagittario.webp" alt="Dorso Sagittario" loading="lazy" decoding="async"></span></button><span class="cap">♐︎ Sagittario</span></li></ul></div><div class="belem el-terra"><h3 class="sub"><span><img src="img/elementi/terra.webp" alt="" width="30" height="30">Terra</span></h3><ul class="backs"><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-toro.webp" aria-label="Ingrandisci Dorso Toro"><span class="tilt-in"><img src="img/dorsi/dorso-toro.webp" alt="Dorso Toro" loading="lazy" decoding="async"></span></button><span class="cap">♉︎ Toro</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-vergine.webp" aria-label="Ingrandisci Dorso Vergine"><span class="tilt-in"><img src="img/dorsi/dorso-vergine.webp" alt="Dorso Vergine" loading="lazy" decoding="async"></span></button><span class="cap">♍︎ Vergine</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-capricorno.webp" aria-label="Ingrandisci Dorso Capricorno"><span class="tilt-in"><img src="img/dorsi/dorso-capricorno.webp" alt="Dorso Capricorno" loading="lazy" decoding="async"></span></button><span class="cap">♑︎ Capricorno</span></li></ul></div><div class="belem el-aria"><h3 class="sub"><span><img src="img/elementi/aria.webp" alt="" width="30" height="30">Aria</span></h3><ul class="backs"><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-gemelli.webp" aria-label="Ingrandisci Dorso Gemelli"><span class="tilt-in"><img src="img/dorsi/dorso-gemelli.webp" alt="Dorso Gemelli" loading="lazy" decoding="async"></span></button><span class="cap">♊︎ Gemelli</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-bilancia.webp" aria-label="Ingrandisci Dorso Bilancia"><span class="tilt-in"><img src="img/dorsi/dorso-bilancia.webp" alt="Dorso Bilancia" loading="lazy" decoding="async"></span></button><span class="cap">♎︎ Bilancia</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-acquario.webp" aria-label="Ingrandisci Dorso Acquario"><span class="tilt-in"><img src="img/dorsi/dorso-acquario.webp" alt="Dorso Acquario" loading="lazy" decoding="async"></span></button><span class="cap">♒︎ Acquario</span></li></ul></div><div class="belem el-acqua"><h3 class="sub"><span><img src="img/elementi/acqua.webp" alt="" width="30" height="30">Acqua</span></h3><ul class="backs"><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-cancro.webp" aria-label="Ingrandisci Dorso Cancro"><span class="tilt-in"><img src="img/dorsi/dorso-cancro.webp" alt="Dorso Cancro" loading="lazy" decoding="async"></span></button><span class="cap">♋︎ Cancro</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-scorpione.webp" aria-label="Ingrandisci Dorso Scorpione"><span class="tilt-in"><img src="img/dorsi/dorso-scorpione.webp" alt="Dorso Scorpione" loading="lazy" decoding="async"></span></button><span class="cap">♏︎ Scorpione</span></li><li><button class="tilt " type="button" data-zoom="img/dorsi/dorso-pesci.webp" aria-label="Ingrandisci Dorso Pesci"><span class="tilt-in"><img src="img/dorsi/dorso-pesci.webp" alt="Dorso Pesci" loading="lazy" decoding="async"></span></button><span class="cap">♓︎ Pesci</span></li></ul></div></div>
+</div>
+</section>
+
+<section id="pacchetti" aria-labelledby="h-pacchetti">
+<div class="wrap">
+<div class="sec-head"><span class="eyebrow">Si aprono con i crediti</span><h2 id="h-pacchetti">I pacchetti</h2></div>
+<ul class="packs"><li><button class="tilt pack" type="button" data-zoom="img/pacchetti/costellazione.webp" aria-label="Ingrandisci Pacchetto Costellazione"><span class="tilt-in"><img src="img/pacchetti/costellazione.webp" alt="Pacchetto Costellazione" loading="lazy" decoding="async"></span></button><h3>Costellazione</h3><p class="meta">5 carte · 100 crediti</p><p class="mix" aria-label="Contenuto"><span class="s-c">3&nbsp;C</span> <span class="s-r">1&nbsp;R</span> <span class="s-s">1&nbsp;S</span></p><p class="desc">Carte della Casa I. Il pacchetto di tutti i giorni.</p></li><li><button class="tilt pack" type="button" data-zoom="img/pacchetti/zenit.webp" aria-label="Ingrandisci Pacchetto Zenit"><span class="tilt-in"><img src="img/pacchetti/zenit.webp" alt="Pacchetto Zenit" loading="lazy" decoding="async"></span></button><h3>Zenit</h3><p class="meta">10 carte · 300 crediti</p><p class="mix" aria-label="Contenuto"><span class="s-c">3&nbsp;C</span> <span class="s-r">3&nbsp;R</span> <span class="s-s">4&nbsp;S</span></p><p class="desc">Carte della Casa I, con più Stelle: aperture più ricche.</p></li><li><button class="tilt pack" type="button" data-zoom="img/pacchetti/nuova-casa.webp" aria-label="Ingrandisci Pacchetto Nuova Casa"><span class="tilt-in"><img src="img/pacchetti/nuova-casa.webp" alt="Pacchetto Nuova Casa" loading="lazy" decoding="async"></span></button><h3>Nuova Casa</h3><p class="meta">8 carte · 200 crediti</p><p class="mix" aria-label="Contenuto"><span class="s-c">4&nbsp;C</span> <span class="s-r">2&nbsp;R</span> <span class="s-s">2&nbsp;S</span></p><p class="desc">Carte dell'ultima Casa uscita.</p></li><li><button class="tilt pack" type="button" data-zoom="img/pacchetti/archivio-celeste.webp" aria-label="Ingrandisci Pacchetto Archivio Celeste"><span class="tilt-in"><img src="img/pacchetti/archivio-celeste.webp" alt="Pacchetto Archivio Celeste" loading="lazy" decoding="async"></span></button><h3>Archivio Celeste</h3><p class="meta">20 carte · 400 crediti</p><p class="mix" aria-label="Contenuto"><span class="s-c">12&nbsp;C</span> <span class="s-r">4&nbsp;R</span> <span class="s-s">4&nbsp;S</span></p><p class="desc">Carte di una Casa precedente, a tua scelta.</p></li><li><button class="tilt pack" type="button" data-zoom="img/pacchetti/luna-piena.webp" aria-label="Ingrandisci Pacchetto Luna Piena"><span class="tilt-in"><img src="img/pacchetti/luna-piena.webp" alt="Pacchetto Luna Piena" loading="lazy" decoding="async"></span></button><h3>Luna Piena</h3><p class="meta">12 carte · 600 crediti</p><p class="mix" aria-label="Contenuto"><span class="s-c">6&nbsp;C</span> <span class="s-r">3&nbsp;R</span> <span class="s-e">1&nbsp;E</span> <span class="s-s">1&nbsp;S</span> <span class="s-a">1&nbsp;A</span></p><p class="desc">Con un Ascendente garantito.</p></li></ul>
+<p class="legend"><span><b class="s-c">C</b> Comune</span><span><b class="s-r">R</b> Rara</span><span><b class="s-e">E</b> Epica</span><span><b class="s-s">S</b> Stella: lo slot che può contenere le carte più rare</span><span><b class="s-a">A</b> Ascendente</span></p>
+</div>
+</section>
+</main>
+
+<footer>
+<nav aria-label="Pagine"><a href="index.html">Home</a><a href="regolamento.html">Regolamento</a><a href="collezione.html" aria-current="page">Collezione</a></nav>
+Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Carta ingrandita">
+<button class="lbx" type="button" aria-label="Chiudi">✕</button>
+<span class="tilt" id="lbCard" data-free><span class="tilt-in"><img src="" alt=""></span></span>
+</div>
+
+<script>
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MAX = 14;
+  // inclinazione 3D: segue il mouse o il dito, la luce segue il punto toccato
+  function bind(el) {
+    let down = null;
+    const set = (e) => {
+      const r = el.getBoundingClientRect();
+      const x = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+      const y = Math.min(Math.max((e.clientY - r.top) / r.height, 0), 1);
+      el.style.setProperty('--ry', ((x - .5) * 2 * MAX).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', ((.5 - y) * 2 * MAX).toFixed(2) + 'deg');
+      el.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+      el.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      el.style.setProperty('--ga', '1');
+    };
+    const reset = () => {
+      el.classList.remove('on');
+      ['--rx', '--ry'].forEach(p => el.style.setProperty(p, '0deg'));
+      el.style.setProperty('--ga', '0');
+    };
+    el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !still) { el.classList.add('on'); set(e); } });
+    el.addEventListener('pointerdown', e => {
+      down = { x: e.clientX, y: e.clientY, t: Date.now() };
+      if (e.pointerType !== 'mouse' && !still) { el.classList.add('on'); set(e); }
+    });
+    el.addEventListener('pointermove', e => { if (el.classList.contains('on')) set(e); });
+    el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') reset(); });
+    el.addEventListener('pointercancel', reset);
+    el.addEventListener('pointerup', e => {
+      if (e.pointerType !== 'mouse') reset();
+      const tap = down && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 10 && Date.now() - down.t < 400;
+      down = null;
+      if (tap && el.dataset.zoom) open(el.dataset.zoom, el.querySelector('img').alt, el.classList.contains('pack'));
+    });
+  }
+  document.querySelectorAll('.tilt').forEach(bind);
+
+  // ingrandimento
+  const lb = document.getElementById('lb'), lbCard = document.getElementById('lbCard'), lbImg = lbCard.querySelector('img');
+  let last = null;
+  function open(src, alt, wide) {
+    last = document.activeElement;
+    lbImg.src = src; lbImg.alt = alt;
+    lbCard.classList.toggle('pack', wide); lbCard.classList.toggle('wide', wide);
+    lb.hidden = false; lb.querySelector('.lbx').focus();
+  }
+  function close() { lb.hidden = true; lbImg.src = ''; if (last) last.focus(); }
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.lbx')) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) close(); });
+  document.querySelectorAll('.tilt[data-zoom]').forEach(b => b.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(b.dataset.zoom, b.querySelector('img').alt, b.classList.contains('pack')); }
+  }));
+
+  // schede per rarità
+  const tabs = [...document.querySelectorAll('[role=tab]')];
+  function pick(t, focus) {
+    tabs.forEach(x => {
+      const on = x === t;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) t.focus();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pick(t));
+    t.addEventListener('keydown', e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
