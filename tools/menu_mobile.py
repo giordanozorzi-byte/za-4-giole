@@ -23,13 +23,14 @@ CSS = """
 @media (prefers-reduced-motion: reduce){.za-menu summary span{transition:none}}
 """
 
-def menu(rules, collezione, iscriviti, accedi, current=None):
+def menu(rules, collezione, iscriviti, accedi, current=None, gioca="gioca.html"):
     cur = lambda n: ' aria-current="page"' if current == n else ''
     close = ' onclick="this.closest(\'details\').open=false"'
     return ('<details class="za-menu"><summary aria-label="Menu"><span></span><span></span><span></span></summary>'
             '<div class="za-menu-panel" role="navigation" aria-label="Menu">'
             f'<a href="{rules}"{cur("rules")}{close}>Regolamento</a>'
             f'<a href="{collezione}"{cur("coll")}{close}>Collezione</a>'
+            f'<a href="{gioca}"{cur("play")}{close}>Gioca!</a>'
             f'<a class="za-menu-cta" href="{iscriviti}"{close}>Iscriviti</a>'
             f'<a class="za-menu-login" href="{accedi}"{close}>Hai già un account? Accedi</a>'
             '</div></details>')
