@@ -107,6 +107,7 @@ h1,h2,h3{{font-family:Cinzel,serif;margin:0;line-height:1.1;text-wrap:balance}}
 header{{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 32px;
 background:linear-gradient(180deg,rgba(18,24,48,.88),rgba(10,15,34,.84));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:2px solid var(--gold);box-shadow:0 -6px 0 -5px rgba(217,185,124,.45) inset}}
 .brand{{display:flex;align-items:center;gap:14px}}
+.brand>a:first-child{{flex:none}}
 .brand>a:first-child img{{height:52px;width:auto;display:block}}
 .ghost{{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1.5px solid rgba(235,207,147,.55);border-radius:6px;font:700 14px Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--gold-s);white-space:nowrap;transition:background .2s}}
 .ghost:hover{{background:rgba(235,207,147,.14)}}
@@ -276,15 +277,12 @@ section{{padding:56px 0}}
 <span class="tilt t2" data-free><span class="tilt-in"><img src="{card_src('Sole', 'Capricorno')}" alt=""></span></span>
 </div>
 </div>
-<nav class="cue" aria-label="Sezioni della collezione">
-<a href="#carte">Le carte</a><a href="#dei">Gli dèi</a><a href="#dorsi">I dorsi</a><a href="#pacchetti">I pacchetti</a>
-</nav>
 </section>
 
 <section id="carte" aria-labelledby="h-carte">
 <div class="wrap">
-<div class="sec-head"><span class="eyebrow">Casa I · il set di lancio</span><h2 id="h-carte">Le carte</h2>
-<p>Ogni carta è un pianeta in un segno: 7 pianeti per 12 segni, più i 12 Ascendenti. Tocca una carta per vederla da vicino.</p></div>
+<div class="sec-head"><h2 id="h-carte">Le carte</h2>
+<p>Ogni carta è un pianeta in un segno: 7 pianeti per 12 segni, più i 12 Ascendenti.</p></div>
 <div class="tabs" role="tablist" aria-label="Rarità">{tabs}</div>
 {panels}
 </div>
@@ -292,8 +290,8 @@ section{{padding:56px 0}}
 
 <section id="dei" aria-labelledby="h-dei">
 <div class="wrap">
-<div class="sec-head"><span class="eyebrow">Le Fazioni</span><h2 id="h-dei">Gli dèi</h2>
-<p>Quattro dèi si contendono il trono di Zeus. Quello che scegli potenzia le creature del suo elemento, in tutti i tuoi mazzi.</p></div>
+<div class="sec-head"><h2 id="h-dei">Gli dèi</h2>
+<p>Quattro dèi si contendono il trono di Zeus. Quello che scegli definisce la tua <strong>fazione</strong> e potenzia le creature del suo elemento, in tutti i tuoi mazzi.</p></div>
 {gods}
 <div class="ade">
 <div class="ade-in">
@@ -311,11 +309,11 @@ section{{padding:56px 0}}
 
 <section id="dorsi" aria-labelledby="h-dorsi">
 <div class="wrap">
-<div class="sec-head"><span class="eyebrow">Cosmetici</span><h2 id="h-dorsi">I dorsi</h2></div>
+<div class="sec-head"><h2 id="h-dorsi">I dorsi</h2></div>
 <div class="std">
 {tilt_img("img/dorsi/dorso-standard.webp", "Dorso standard")}
 <div><h3>Dorso standard</h3><p>Il dorso di tutte le carte: blu notte, motivo shippō e il sole al centro.</p>
-<p>I dorsi dei segni sono cosmetici: si comprano con i crediti e non cambiano nulla in partita.</p></div>
+<p>I dorsi dei segni sono <strong>cosmetici</strong>: si comprano con i crediti e non cambiano nulla in partita.</p></div>
 </div>
 <div class="belems">{backs}</div>
 </div>
@@ -323,7 +321,7 @@ section{{padding:56px 0}}
 
 <section id="pacchetti" aria-labelledby="h-pacchetti">
 <div class="wrap">
-<div class="sec-head"><span class="eyebrow">Si aprono con i crediti</span><h2 id="h-pacchetti">I pacchetti</h2></div>
+<div class="sec-head"><h2 id="h-pacchetti">I pacchetti</h2></div>
 {packs}
 <p class="legend"><span><b class="s-c">C</b> Comune</span><span><b class="s-r">R</b> Rara</span><span><b class="s-e">E</b> Epica</span><span><b class="s-s">S</b> Stella: lo slot che può contenere le carte più rare</span><span><b class="s-a">A</b> Ascendente</span></p>
 </div>

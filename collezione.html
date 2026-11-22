@@ -24,6 +24,7 @@ h1,h2,h3{font-family:Cinzel,serif;margin:0;line-height:1.1;text-wrap:balance}
 header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 32px;
 background:linear-gradient(180deg,rgba(18,24,48,.88),rgba(10,15,34,.84));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:2px solid var(--gold);box-shadow:0 -6px 0 -5px rgba(217,185,124,.45) inset}
 .brand{display:flex;align-items:center;gap:14px}
+.brand>a:first-child{flex:none}
 .brand>a:first-child img{height:52px;width:auto;display:block}
 .ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1.5px solid rgba(235,207,147,.55);border-radius:6px;font:700 14px Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--gold-s);white-space:nowrap;transition:background .2s}
 .ghost:hover{background:rgba(235,207,147,.14)}
@@ -166,6 +167,29 @@ section{padding:56px 0}
 }
 @media (max-width:380px){.ghost.cta{display:none}}
 @media (prefers-reduced-motion:reduce){.float{animation:none}.tilt-in{transition:none}html{scroll-behavior:auto}}
+
+/* menu a tendina su telefono e tablet */
+.za-menu{display:none}
+.za-menu summary{list-style:none;display:flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;padding:0 12px;box-sizing:border-box;border:1.5px solid rgba(235,207,147,.55);border-radius:8px;background:rgba(11,14,53,.6);cursor:pointer}
+.za-menu summary::-webkit-details-marker{display:none}
+.za-menu summary:focus-visible{outline:2px solid #E8B04B;outline-offset:2px}
+.za-menu summary span{display:block;height:2px;border-radius:2px;background:#FFE7A0;transition:transform .25s ease,opacity .2s ease}
+.za-menu[open] summary{border-color:#E8B04B}
+.za-menu[open] summary span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.za-menu[open] summary span:nth-child(2){opacity:0}
+.za-menu[open] summary span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.za-menu-panel{position:absolute;left:0;right:0;top:100%;display:flex;flex-direction:column;padding:8px 20px 22px;background:rgba(10,15,34,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:2px solid #E8B04B;box-shadow:0 24px 40px rgba(0,0,0,.55)}
+.za-menu-panel a{display:block;padding:16px 4px;border-bottom:1px solid rgba(235,207,147,.18);font:700 16px Cinzel,serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:#EBCF93}
+.za-menu-panel a[aria-current=page]{color:#FFE7A0}
+.za-menu-panel a.za-menu-cta{margin-top:18px;padding:15px 4px;border:0;border-radius:8px;text-align:center;font-weight:800;color:#2A1405;background:linear-gradient(180deg,#FFF0B3 0%,#E8B04B 55%,#B07A22 100%);box-shadow:0 4px 12px rgba(0,0,0,.45)}
+.za-menu-panel a.za-menu-login{padding:12px 4px 0;border:0;text-align:center;font:600 13px Nunito,sans-serif;letter-spacing:0;text-transform:none;color:#B9B6CF}
+@media (prefers-reduced-motion: reduce){.za-menu summary span{transition:none}}
+@media (max-width:860px){
+.za-menu{display:block}
+header .brand .ghost,header>.ghost.cta{display:none!important}
+header .brand>a:first-child img{height:48px!important}
+header{padding:8px 16px}
+}
 </style>
 </head>
 <body>
@@ -176,6 +200,7 @@ section{padding:56px 0}
 <a class="ghost" href="collezione.html" aria-current="page">Collezione</a>
 </div>
 <a class="ghost cta" href="index.html#iscriviti">Iscriviti</a>
+<details class="za-menu"><summary aria-label="Menu"><span></span><span></span><span></span></summary><div class="za-menu-panel" role="navigation" aria-label="Menu"><a href="regolamento.html" onclick="this.closest('details').open=false">Regolamento</a><a href="collezione.html" aria-current="page" onclick="this.closest('details').open=false">Collezione</a><a class="za-menu-cta" href="index.html#iscriviti" onclick="this.closest('details').open=false">Iscriviti</a><a class="za-menu-login" href="index.html" onclick="this.closest('details').open=false">Hai già un account? Accedi</a></div></details>
 </header>
 
 <main>
