@@ -1,0 +1,806 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Regolamento per i giocatori</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700;900&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: tutorial a capitoli, una colonna stretta pensata per il telefono; barra di avanzamento in alto, navigazione fissa in basso. */
+:root{
+  /* token del design system Zodiax Arena */
+  --sky:#1D2238; --sky-2:#07060F; --panel:#0B0E35; --panel-2:#2A3158; --line:#3A4374; --line-soft:#2A3158;
+  --text:#FFF8EC; --muted:#A8A3CF; --faint:#A8A3CF;
+  --gold:#E8B04B; --gold-deep:#9C6A1C; --gold-light:#FFE7A0; --ink-gold:#2A1405;
+  --indaco:#2F57C2; --indaco-basso:#101A48;
+  --fuoco:#F2604A; --acqua:#6E95F0; --terra:#96A753; --aria:#B8A2A9;
+  --atk:#FF5A4E; --def:#6E95F0; --ok:#7EE0A4; --bad:#FF6B7F;
+  --c-segno:#7FA8FF; --c-pianeta:#F2604A; --c-elemento:#96A753; --c-fazione:#E8B04B; --c-asc:#D9B8FF; --c-vant:#FF5A8A; --c-casa:#7AF0FF;
+  --f-display:"Cinzel","Trajan Pro",Georgia,serif;
+  --f-deco:"Cinzel Decorative","Cinzel",Georgia,serif;
+  --f-body:"Nunito","Segoe UI",system-ui,sans-serif;
+  --f-mono:"Nunito","Segoe UI",system-ui,sans-serif;
+  --r:14px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--sky)}
+body{color:var(--text);font-family:var(--f-body);font-size:16px;line-height:1.5;margin:0;background:var(--sky);font-variant-numeric:tabular-nums}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--sky)}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:.01em}
+h2{font-size:clamp(1.65rem,6vw,2.2rem);line-height:1.12}
+h3{font-size:1.15rem}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* barra superiore */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:linear-gradient(var(--sky) 78%,#1D223800)}
+.top .wrap{padding-block:10px 12px;display:flex;flex-direction:column;gap:8px}
+.top-row{display:flex;align-items:center;gap:10px}
+.brand{font-family:var(--f-display);font-size:1.02rem;color:var(--gold);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.part{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap}
+.home-btn{flex:none;background:var(--panel);border:1px solid var(--gold-deep);border-radius:10px;padding:6px 10px;font-size:.8rem;font-weight:700;color:var(--gold);text-decoration:none;white-space:nowrap}
+.home-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (max-width:430px){.part{display:none}}
+@media (max-width:360px){.fan .card{width:112px}.parts button{font-size:.72rem;gap:4px;padding:8px 2px}.parts button .n{width:18px;height:18px}}
+html,body{overflow-x:clip}
+.menu-btn{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:.8rem;font-weight:700}
+.prog{display:flex;gap:4px}
+.prog i{flex:1;height:4px;border-radius:4px;background:var(--line)}
+.prog i.done{background:var(--gold-deep)}
+.prog i.now{background:var(--gold)}
+.prog i.gap{flex:0 0 8px;background:none}
+
+/* capitoli */
+main{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.ch{display:flex;flex-direction:column;gap:18px;padding-block:8px 24px}
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.lead{color:var(--muted);font-size:1.02rem}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.rule{border-left:3px solid var(--gold);background:var(--panel-2);border-radius:0 12px 12px 0;padding:12px 14px;font-size:.95rem}
+.rule b{color:var(--gold)}
+.note{font-size:.85rem;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.pts{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.pts li{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
+.pts .ic{width:36px;height:36px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--f-display);color:var(--gold);font-size:1.1rem}
+.pts b{display:block}
+.pts span{color:var(--muted);font-size:.92rem}
+
+/* carta con medaglioni sovrapposti */
+.card{position:relative;container-type:inline-size;aspect-ratio:5/7;border-radius:5.5%;overflow:hidden;background:var(--panel);box-shadow:0 10px 30px #0008;transition:transform .35s,filter .35s,opacity .35s}
+.card img{display:block;width:100%;height:100%;object-fit:cover}
+.med{position:absolute;top:74.4%;width:10.6%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-display);font-size:7.2cqw;color:#fff;text-shadow:0 1px 2px #0009;line-height:1;padding-top:.6cqw;border:.5cqw solid #E8B04B}
+.med.atk{left:16%;background:radial-gradient(circle at 50% 35%,#FF5A4E,#9E1838 70%)}
+.med.def{left:84%;background:radial-gradient(circle at 50% 35%,#3D6BFF,#16206E 70%)}
+.med.up{box-shadow:0 0 0 2px var(--gold),0 0 12px var(--gold)}
+.badges{position:absolute;left:4%;right:4%;top:16%;display:flex;flex-direction:column;gap:3px;align-items:flex-end;pointer-events:none}
+.badge{font-size:max(8px,6cqw);font-weight:800;padding:.2em .5em;border-radius:99px;background:#0B0E35cc;border:1px solid var(--gold);color:var(--gold);white-space:nowrap}
+.card.dead{filter:grayscale(1) brightness(.55);transform:scale(.94)}
+.card .x{position:absolute;inset:0;display:none;place-items:center;font-family:var(--f-display);font-size:40cqw;color:var(--bad);text-shadow:0 0 18px #000}
+.card.dead .x{display:grid}
+.float{position:absolute;left:50%;top:-4px;transform:translate(-50%,0);font-family:var(--f-mono);font-weight:600;font-size:14cqw;color:var(--bad);text-shadow:0 2px 8px #000;animation:fl 1.3s ease-out forwards;pointer-events:none}
+@keyframes fl{0%{opacity:0;transform:translate(-50%,10px)}15%{opacity:1}100%{opacity:0;transform:translate(-50%,-40px)}}
+.hit{animation:hit .45s}
+@keyframes hit{0%,100%{transform:none}30%{transform:translateX(-5%)}60%{transform:translateX(4%)}}
+
+/* capitolo 1 */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pvbox{display:flex;flex-direction:column;gap:6px}
+.pvbox .who{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;justify-content:space-between}
+.pvbox .who b{color:var(--text);font-family:var(--f-mono);letter-spacing:0}
+.pips{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+.pips i{height:12px;border-radius:3px;background:var(--ok);transition:background .4s,opacity .4s}
+.pips i.off{background:var(--line);opacity:.6}
+.fan{position:relative;height:220px;display:flex;justify-content:center}
+.fan .card{position:absolute;width:132px;top:10px}
+.fan .card:nth-child(1){transform:translateX(-78%) rotate(-10deg)}
+.fan .card:nth-child(2){z-index:2}
+.fan .card:nth-child(3){transform:translateX(78%) rotate(10deg)}
+
+/* capitolo carta: hotspot */
+.anat{display:grid;grid-template-columns:1fr;gap:14px}
+.anat-card{position:relative;width:min(300px,78vw);margin:0 auto}
+.parts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:min(380px,100%);margin:0 auto}
+.parts button{padding:8px 4px;border-radius:10px;border:1px solid var(--line);background:var(--panel-2);color:var(--text);font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center;gap:6px}
+.parts button .n{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:.72rem}
+.parts button[aria-pressed=true]{border-color:var(--gold);background:var(--panel-2)}
+.parts button[aria-pressed=true] .n{background:var(--gold);color:var(--ink-gold)}
+.zoomrow{display:flex;gap:12px;align-items:flex-start}
+.zoom{flex:0 0 96px;width:96px;aspect-ratio:1;border-radius:12px;border:2px solid var(--gold);background-repeat:no-repeat;background-color:var(--panel)}
+.hs-info{min-height:132px}
+.hs-info h3{display:flex;align-items:center;gap:8px}
+.formula{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.92rem}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;background:var(--panel-2);border:1px solid var(--line);font-size:.85rem;white-space:nowrap}
+.chip.k{border-color:currentColor}
+
+/* mazzo */
+.deck{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slot{display:flex;flex-direction:column;gap:4px;background:none;border:0;padding:0;text-align:center;min-width:0}
+.slot .cap{font-size:.7rem;color:var(--muted);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot .cap .tag{display:block;font-style:normal;font-weight:800;color:var(--gold);font-size:.66rem;margin-top:2px}
+.nm{position:relative}
+.nm .float{position:static;display:block;transform:none;font-size:1.05rem;text-shadow:none;animation:fi .5s ease-out}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+.slot .cap b{color:var(--text);display:block;font-size:.74rem}
+.slot.bad .card{box-shadow:0 0 0 2px var(--bad)}
+.counts{display:flex;flex-wrap:wrap;gap:6px}
+.cnt{font-size:.82rem;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:var(--panel)}
+.cnt.bad{border-color:var(--bad);color:var(--bad)}
+.verdict{font-weight:700;font-size:.95rem}
+.verdict.ok{color:var(--ok)} .verdict.bad{color:var(--bad)}
+.gods{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.god{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:99px;border:1px solid var(--line);background:var(--panel)}
+.god img{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:50% 20%}
+.god[aria-pressed="true"]{border-color:var(--gold);background:var(--panel-2)}
+
+/* foglio di scelta */
+.sheet{position:fixed;inset:0;z-index:40;background:#07060Fd0;display:flex;align-items:flex-end;justify-content:center}
+.sheet>div{width:min(560px,100%);max-height:86vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:20px 20px 0 0;
+  padding:16px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:12px}
+.sheet h3{display:flex;justify-content:space-between;align-items:center}
+.sheet .close{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:.85rem}
+.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pick button{background:none;border:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:.75rem;color:var(--muted)}
+.pick button[aria-pressed="true"] .card{box-shadow:0 0 0 3px var(--gold)}
+.toc{display:flex;flex-direction:column;gap:6px}
+.toc button{display:flex;gap:12px;align-items:center;text-align:left;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.toc button .n{font-family:var(--f-mono);color:var(--gold);width:22px}
+.toc .ph{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:6px}
+
+/* combattimento */
+.arena{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.arena .card{width:min(100%,calc(24vh*5/7));margin:0 auto}
+.side{display:flex;flex-direction:column;gap:8px;min-width:0}
+.side .nm{font-size:.82rem;color:var(--muted);text-align:center;min-height:2.4em;line-height:1.2}
+.side .nm b{color:var(--text);display:block}
+.vs{grid-column:1/-1;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.step{display:flex;flex-direction:column;gap:10px}
+.step .phase{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.step h3{font-size:1.25rem}
+.calc{font-family:var(--f-mono);font-size:.9rem;background:var(--sky-2);border:1px solid var(--line-soft);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.calc .r{display:flex;justify-content:space-between;gap:8px}
+.calc .r b{color:var(--text)}
+.stepnav{display:flex;gap:8px}
+.stepnav button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel-2);font-weight:700}
+.stepnav .go{background:var(--indaco);color:var(--text);border-color:var(--gold);flex:2}
+.stepnav button:disabled{opacity:.4;cursor:default}
+.dots{display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--gold)}
+
+/* fine partita */
+.ends{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.end{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;gap:4px;align-items:center}
+.end .big{font-family:var(--f-display);font-size:1.6rem;color:var(--gold);line-height:1}
+.end span{font-size:.78rem;color:var(--muted);line-height:1.3}
+.end b{color:var(--gold)}
+.cascade{display:flex;flex-direction:column;gap:0}
+.cas{display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:center;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.cas .n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--panel-2);border:1px solid var(--gold);color:var(--gold);font-weight:800;font-size:.85rem}
+.cas small{display:block;color:var(--muted);font-size:.82rem}
+.arrow{text-align:center;color:var(--faint);font-size:.8rem;padding:2px 0}
+.pause{text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;padding:22px 16px;border:1px solid var(--gold-deep);border-radius:18px;background:var(--panel)}
+.pause.finale{padding:48px 20px;margin-top:24px}
+.pause.finale .moon{font-size:3.2rem}
+.pause .moon{font-size:2.2rem;color:var(--gold);font-family:var(--f-display)}
+.avatar{display:block;border-radius:50%;filter:drop-shadow(0 6px 18px #0009)}
+.pause .avatar{width:104px;height:104px}
+.pause.finale h2{font-family:var(--f-deco);font-weight:900}
+.pause.finale .avatar{width:min(200px,52vw);height:auto;aspect-ratio:1}
+.lachesi{display:flex;gap:14px;align-items:center}
+.lachesi .avatar{flex:none;width:72px;height:72px}
+.cta{padding:12px 18px;border-radius:999px;border:1px solid var(--gold);background:var(--indaco);color:var(--text);font-weight:800;letter-spacing:.06em}
+
+/* costruisci la carta */
+.builder{display:grid;grid-template-columns:40% 1fr;gap:14px;align-items:start;position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:5;background:var(--sky);padding-block:8px;margin-inline:-4px;padding-inline:4px;border-bottom:1px solid var(--line-soft)}
+.ctrl{display:flex;flex-direction:column;gap:6px}
+.ctrl label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:var(--panel);font-size:.85rem;min-width:40px}
+.seg button[aria-pressed="true"]{border-color:var(--gold);background:var(--panel-2);color:var(--gold)}
+select{font:inherit;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%}
+.bars{display:flex;flex-direction:column;gap:10px}
+.bar-h{display:flex;justify-content:space-between;align-items:baseline}
+.bar-h b{font-family:var(--f-mono);font-size:1.4rem}
+.stack{display:flex;height:16px;border-radius:6px;overflow:hidden;background:var(--sky-2);gap:2px}
+.stack i{display:block;height:100%;transition:width .35s}
+.contrib{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.contrib li{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;font-size:.9rem}
+.contrib li .v{font-family:var(--f-mono);font-weight:600}
+.contrib li.off{opacity:.42}
+.contrib li small{display:block;color:var(--muted);font-size:.78rem}
+.ico{width:22px;height:22px}
+
+/* elementi, fazioni, case */
+.cycle{width:100%;max-width:380px;margin:0 auto;display:block}
+.els{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.el{border-radius:12px;padding:12px;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.el b{font-family:var(--f-display);font-size:1.15rem;font-weight:400}
+.el span{font-size:.85rem;color:var(--muted)}
+.el .g{font-size:.95rem;letter-spacing:.2em}
+.godcards{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.godcards button{flex:0 0 36%;scroll-snap-align:start;background:none;border:0;padding:0}
+.godcards button[aria-pressed="true"] .card{box-shadow:0 0 0 3px var(--gold)}
+.lanes{display:flex;flex-direction:column;gap:0;position:relative}
+.lane{display:grid;grid-template-columns:20px 1fr;gap:12px;align-items:start;padding-bottom:14px;position:relative}
+.lane::before{content:"";position:absolute;left:9px;top:20px;bottom:0;width:2px;background:var(--line)}
+.lane:last-child::before{display:none}
+.lane .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--gold);background:var(--sky);margin-top:2px}
+.lane h3{font-family:var(--f-body);font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.houses{display:flex;flex-wrap:wrap;gap:8px}
+.house{display:flex;gap:10px;align-items:center;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);text-align:left;min-width:0;flex:1 1 220px}
+.house .rn{font-family:var(--f-display);color:var(--gold);font-size:1.1rem;width:34px;text-align:center;flex:none}
+.house b{display:block;font-size:.9rem}
+.house span{font-size:.82rem;color:var(--muted)}
+.house.launch{border-color:var(--gold-deep)}
+.packs{display:flex;flex-direction:column;gap:8px}
+.pack{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 12px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
+.pack b{font-size:.95rem}
+.pack .p{font-family:var(--f-mono);color:var(--gold);font-weight:600;grid-row:1/3;grid-column:2;align-self:center}
+.pack span{font-size:.82rem;color:var(--muted)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:.92rem}
+.kv span:nth-child(even){font-family:var(--f-mono);color:var(--gold);text-align:right}
+
+/* navigazione in basso */
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(#1D223800,var(--sky) 30%)}
+.bottom .wrap{display:flex;gap:10px;padding-block:18px calc(12px + env(safe-area-inset-bottom,0px))}
+.bottom button{flex:1;padding:13px 10px;border-radius:14px;border:1px solid var(--line);background:var(--panel);font-weight:800}
+.bottom .next{flex:2;background:var(--panel-2);border-color:var(--gold);color:var(--gold)}
+.bottom button:disabled{opacity:.35;cursor:default}
+@media (min-width:600px){.fan{height:260px}.fan .card{width:150px}}
+
+/* blocchi a due colonne: sul telefono restano nel flusso, da desktop si affiancano */
+.split,.split>.col{display:contents}
+.stoc{display:none}
+@media (min-width:1024px){
+  .wrap{max-width:1180px}
+  main.wrap{display:grid;grid-template-columns:220px minmax(0,1fr);column-gap:48px;align-items:start}
+  main .ch{grid-column:2;padding-top:20px;gap:20px}
+  .stoc{display:flex;flex-direction:column;gap:4px;grid-column:1;grid-row:1/span 20;position:sticky;top:100px;padding-top:20px}
+  .stoc .ph{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:12px 0 4px}
+  .stoc .ph:first-child{margin-top:0}
+  .stoc button{display:flex;gap:10px;align-items:center;text-align:left;background:none;border:1px solid transparent;border-radius:10px;padding:8px 10px;color:var(--muted);font-size:.92rem}
+  .stoc button .n{font-family:var(--f-mono);color:var(--faint);width:20px;font-size:.82rem}
+  .stoc button:hover{background:var(--panel);color:var(--text)}
+  .stoc button[aria-current="step"]{background:var(--panel-2);border-color:var(--gold-deep);color:var(--text)}
+  .stoc button[aria-current="step"] .n{color:var(--gold)}
+  .stoc button.done .n{color:var(--gold-deep)}
+  .menu-btn{display:none}
+  .top .wrap{padding-left:calc(16px + 220px + 48px)}
+  .bottom .wrap{padding-left:calc(16px + 220px + 48px);justify-content:flex-end}
+  .bottom button{flex:0 0 auto;min-width:170px}
+  .bottom .next{flex:0 0 auto;min-width:240px}
+  h2{font-size:2.4rem}
+  .lead{font-size:1.08rem;max-width:68ch}
+  .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+  .split>.col{display:flex;flex-direction:column;gap:18px;min-width:0}
+  .split>.col.sticky{position:sticky;top:100px}
+  .split.one{grid-template-columns:minmax(0,1fr);gap:20px}
+  .fan{height:300px}.fan .card{width:170px}
+  .anat-card{width:min(320px,100%)}
+  .arena .card{width:min(100%,calc(44vh*5/7))}
+  .builder{position:static;grid-template-columns:1fr;background:none;border:0;margin:0;padding:0;gap:16px}
+  .builder #bCard{width:min(280px,100%);margin:0 auto}
+  .ctrlbox{order:-1}
+  .godcards{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible}
+  .godcards button{flex:none}
+  .sheet{align-items:center}
+  .sheet>div{border-radius:20px;width:min(720px,100%)}
+  .pick{grid-template-columns:repeat(6,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <a class="home-btn" href="index.html" aria-label="Torna alla home di Zodiax Arena">‹ Home</a>
+      <span class="brand" id="chTitle">Regolamento per i giocatori</span>
+      <span class="part" id="partLbl">Parte 1</span>
+      <button class="menu-btn" id="menuBtn" aria-haspopup="dialog">Capitoli</button>
+    </div>
+    <div class="prog" id="prog" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+<aside class="stoc" id="stoc" aria-label="Capitoli"></aside>
+
+<!-- 1 -->
+<section class="ch" data-id="benvenuto" data-part="1" data-title="Benvenuto">
+  <h2>Combatti con il tuo segno zodiacale!</h2>
+  <div class="split"><div class="col">
+  <div class="fan" id="fan"></div>
+  </div><div class="col">
+  <ul class="pts">
+    <li><span class="ic">7</span><div><b>Componi un mazzo di 7 creature</b><span>Una per ogni pianeta, più un Ascendente.</span></div></li>
+    <li><span class="ic">⚔</span><div><b>Sfida un altro giocatore</b><span>Il server gioca la partita: durante lo scontro non prendi decisioni. La strategia è tutta nel mazzo.</span></div></li>
+    <li><span class="ic">PV</span><div><b>Porta l'avversario a 0 PV</b><span>Ognuno parte con 10 punti vita.</span></div></li>
+    <li><span class="ic">6</span><div><b>Circa 6 round a partita</b><span>Per raggiungere il KO.</span></div></li>
+  </ul>
+  </div></div>
+</section>
+
+<!-- 2 -->
+<section class="ch" data-id="carta" data-part="1" data-title="Leggere una carta" hidden>
+  <h2>Ogni carta è un pianeta in un segno</h2>
+  <div class="split"><div class="col sticky">
+    <div class="anat-card" id="anatCard"></div>
+    <div class="parts" id="parts"></div>
+  </div><div class="col">
+    <div class="box hs-info" id="hsInfo" aria-live="polite"></div>
+  <div class="box" style="display:flex;flex-direction:column;gap:10px">
+    <b>Come nascono i numeri</b>
+    <div class="formula"><span class="chip k" style="color:var(--atk)">ATK 19</span>=<span class="chip">Leone 12</span>+<span class="chip">Marte 7</span></div>
+    <div class="formula"><span class="chip k" style="color:var(--def)">DEF 12</span>=<span class="chip">Leone 8</span>+<span class="chip">Marte 4</span></div>
+    <p class="note"><b style="color:var(--text)">ATK</b> è il danno di ogni colpo. <b style="color:var(--text)">DEF</b> è la resistenza: i colpi la consumano e a 0 la creatura muore. In campo si aggiungono i bonus: li vedi nella Parte 2.</p>
+  </div>
+  </div></div>
+</section>
+
+<!-- 3 -->
+<section class="ch" data-id="mazzo" data-part="1" data-title="Il mazzo" hidden>
+  <h2>Componi il tuo mazzo di 7 pianeti e l'Ascendente</h2>
+  <p class="lead">Ogni mazzo ha una carta per pianeta: decidi tu in quale segno. Tocca una carta per cambiarla.</p>
+  <div class="split"><div class="col">
+  <div class="deck" id="deck"></div>
+  <div class="counts" id="counts"></div>
+  <p class="verdict" id="verdict" aria-live="polite"></p>
+  </div><div class="col">
+  <div class="box" style="display:flex;flex-direction:column;gap:10px">
+    <b>La tua Fazione</b>
+    <p class="note" style="margin-top:-4px">Il Dio che scegli potenzia le creature del suo elemento, in tutti i tuoi mazzi.</p>
+    <div class="gods" id="deckGods"></div>
+  </div>
+  <ul class="pts">
+    <li><span class="ic">1</span><div><b>Una carta per pianeta</b><span>Tutti i mazzi hanno 1 Leggendaria, 2 Epiche, 2 Rare e 2 Comuni: nessuno vince solo perché ha carte più rare.</span></div></li>
+    <li><span class="ic">△</span><div><b>Da 1 a 3 carte per elemento</b><span>Fuoco, Acqua, Terra e Aria ci sono sempre tutti.</span></div></li>
+    <li><span class="ic">↑</span><div><b>Un Ascendente</b><span>Non combatte: dà +1 ATK alle carte del suo segno.</span></div></li>
+    <li><span class="ic">3</span><div><b>Fino a 3 mazzi salvati</b><span>Quando accetti una sfida scegli quale usare.</span></div></li>
+  </ul>
+  </div></div>
+</section>
+
+<!-- 4 -->
+<section class="ch" data-id="sfida" data-part="1" data-title="La sfida" hidden>
+  <h2>Il combattimento</h2>
+  <div class="split"><div class="col">
+  <div class="arena">
+    <div class="side">
+      <div class="pvbox"><div class="who">Tu <b id="pvA">10 PV</b></div><div class="pips" id="pipsA"></div></div>
+      <div id="slotA"></div>
+      <div class="nm" id="nmA"></div>
+    </div>
+    <div class="side">
+      <div class="pvbox"><div class="who">Avversario <b id="pvB">10 PV</b></div><div class="pips" id="pipsB"></div></div>
+      <div id="slotB"></div>
+      <div class="nm" id="nmB"></div>
+    </div>
+  </div>
+  </div><div class="col">
+  <div class="stepnav">
+    <button id="stepPrev">‹ Indietro</button>
+    <button class="go" id="stepNext">Avanti ›</button>
+  </div>
+  <div class="dots" id="stepDots"></div>
+  <div class="box step" id="stepBox" aria-live="polite"></div>
+  </div></div>
+</section>
+
+<!-- 5 -->
+<section class="ch" data-id="fine" data-part="1" data-title="Come finisce" hidden>
+  <h2>Come finisce una partita</h2>
+  <div class="split one"><div class="col">
+  <div class="ends">
+    <div class="end"><b>KO</b><span>Vince chi porta l'avversario a 0</span></div>
+    <div class="end"><b>Mazzo finito</b><span>Un giocatore ha pescato tutte le carte</span></div>
+    <div class="end"><b>30 round</b><span>Il limite massimo</span></div>
+  </div>
+  </div><div class="col">
+  <p class="lead">Se la partita finisce senza KO, il vincitore si decide così:</p>
+  <div class="cascade">
+    <div class="cas"><span class="n">1</span><div><b>Più PV</b><small>Quasi sempre basta questo</small></div></div>
+    <div class="arrow">se sono pari ↓</div>
+    <div class="cas"><span class="n">2</span><div><b>Più creature ancora vive</b><small>In campo e nel mazzo</small></div></div>
+    <div class="arrow">se sono pari ↓</div>
+    <div class="cas"><span class="n">3</span><div><b>Più DEF sulla creatura in campo</b><small>Senza creatura in campo conta 0</small></div></div>
+    <div class="arrow">se sono pari ↓</div>
+    <div class="cas"><span class="n">=</span><div><b>Pareggio</b><small>Succede in circa 1 partita su 100</small></div></div>
+  </div>
+  </div></div>
+  <div class="box lachesi"><img class="avatar" src="img/za-avatar-moire-256.webp" alt="Le tre Moire"><p class="note">A fine partita entrambi i giocatori possono rileggere la cronaca, round per round, nel <b style="color:var(--text)">Rotolo di Lachesi</b>.</p></div>
+  <div class="pause">
+    <img class="avatar" src="img/za-avatar-ermes-256.webp" alt="Ermes">
+    <h3>Fine della Parte 1: sai giocare</h3>
+    <p class="note">La Parte 2 spiega i bonus, gli elementi, le Fazioni e le case: ti servono per costruire mazzi più forti.</p>
+    <button class="cta" data-goto="bonus">Inizia la Parte 2</button>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="ch" data-id="bonus" data-part="2" data-title="I bonus" hidden>
+  <h2>Costruisci una carta e guarda i bonus</h2>
+  <p class="lead">In campo, ATK e DEF sono i valori stampati più i bonus. Cambia le scelte: la carta e le barre si aggiornano.</p>
+  <div class="split"><div class="col sticky">
+  <div class="builder">
+    <div id="bCard"></div>
+    <div class="ctrl" style="gap:12px">
+      <div class="bars" id="bBars"></div>
+    </div>
+  </div>
+  </div><div class="col">
+  <ul class="contrib" id="bList"></ul>
+  <div class="box ctrlbox" style="display:flex;flex-direction:column;gap:14px">
+    <div class="ctrl"><label>Pianeta</label><div class="seg" id="bPlanet"></div></div>
+    <div class="ctrl"><label>Segno</label><div class="seg" id="bSign"></div></div>
+    <div class="ctrl"><label for="bHouse">Casa</label><select id="bHouse"></select></div>
+    <div class="ctrl"><label>Fazione</label><div class="seg" id="bGod"></div></div>
+    <div class="ctrl"><label>Ascendente del mazzo</label><div class="seg" id="bAsc"></div></div>
+    <div class="ctrl"><label>Contro una creatura di</label><div class="seg" id="bVs"></div></div>
+  </div>
+  </div></div>
+</section>
+
+<!-- 7 -->
+<section class="ch" data-id="elementi" data-part="2" data-title="Elementi" hidden>
+  <h2>Ogni elemento batte il successivo</h2>
+  <div class="split"><div class="col">
+  <svg class="cycle" viewBox="0 0 360 300" role="img" aria-label="Acqua batte Fuoco, Fuoco batte Terra, Terra batte Aria, Aria batte Acqua">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#A8A3CF"/></marker></defs>
+    <g fill="none" stroke="#A8A3CF" stroke-width="1.5">
+      <path d="M212 62 Q280 80 290 126" marker-end="url(#ar)"/>
+      <path d="M290 178 Q280 222 212 240" marker-end="url(#ar)"/>
+      <path d="M148 240 Q80 222 70 178" marker-end="url(#ar)"/>
+      <path d="M70 126 Q80 80 148 62" marker-end="url(#ar)"/>
+    </g>
+    <g font-family="Nunito,system-ui,sans-serif" font-size="12" fill="#A8A3CF">
+      <text x="272" y="78">spegne</text><text x="272" y="236">brucia</text><text x="48" y="236" text-anchor="end" dx="12">ferma</text><text x="56" y="78" text-anchor="end" dx="8">solleva</text>
+    </g>
+    <g font-family="Cinzel,Georgia,serif" font-weight="700" font-size="18" text-anchor="middle">
+      <circle cx="180" cy="50" r="34" fill="#2F63CD33" stroke="#2F63CD"/><text x="180" y="56" fill="#FFF8EC">Acqua</text>
+      <circle cx="300" cy="152" r="34" fill="#D82C2333" stroke="#D82C23"/><text x="300" y="158" fill="#FFF8EC">Fuoco</text>
+      <circle cx="180" cy="252" r="34" fill="#96A75333" stroke="#96A753"/><text x="180" y="258" fill="#FFF8EC">Terra</text>
+      <circle cx="60" cy="152" r="34" fill="#B8A2A933" stroke="#B8A2A9"/><text x="60" y="158" fill="#FFF8EC">Aria</text>
+    </g>
+    <text x="180" y="148" text-anchor="middle" font-family="Nunito,system-ui,sans-serif" font-size="14" font-weight="700" fill="#E8B04B">+1 ATK</text>
+    <text x="180" y="166" text-anchor="middle" font-family="Nunito,system-ui,sans-serif" font-size="11" fill="#A8A3CF">a chi è in vantaggio</text>
+  </svg>
+  <p class="note" style="text-align:center;margin-top:-8px">Fuoco e Aria, Acqua e Terra sono neutri tra loro.</p>
+  </div><div class="col">
+  <p class="lead">Ogni elemento ha anche un'abilità sempre attiva:</p>
+  <div class="els">
+    <div class="el" style="border-color:#D82C2399"><b style="color:var(--fuoco)">Fuoco</b><span class="g">♈︎ ♌︎ ♐︎</span><span><b style="font:inherit;color:var(--text)">+1 ATK</b>. Aggressivo.</span></div>
+    <div class="el" style="border-color:#2F63CD99"><b style="color:var(--acqua)">Acqua</b><span class="g">♋︎ ♏︎ ♓︎</span><span><b style="font:inherit;color:var(--text)">+1 DEF</b>. Resistente.</span></div>
+    <div class="el" style="border-color:#96A75399"><b style="color:var(--terra)">Terra</b><span class="g">♉︎ ♍︎ ♑︎</span><span>Quando muore, il danno ai tuoi PV cala di <b style="font:inherit;color:var(--text)">1</b>. Tenace.</span></div>
+    <div class="el" style="border-color:#B8A2A999"><b style="color:var(--aria)">Aria</b><span class="g">♊︎ ♎︎ ♒︎</span><span>ATK e DEF <b style="font:inherit;color:var(--text)">tirati coi dadi</b> quando entra: da 4 a 16. Imprevedibile.</span></div>
+  </div>
+  </div></div>
+</section>
+
+<!-- 8 -->
+<section class="ch" data-id="fazioni" data-part="2" data-title="Fazioni" hidden>
+  <h2>Il tuo Dio potenzia il suo elemento</h2>
+  <p class="lead">La Fazione vale per tutti i tuoi mazzi.</p>
+  <div class="split"><div class="col">
+  <div class="godcards" id="godCards"></div>
+  </div><div class="col">
+  <div class="box" id="godInfo" aria-live="polite"></div>
+  <div class="rule">Scegli la Fazione alla registrazione: il portale ti propone quella dell'elemento del tuo segno. Puoi cambiarla <b>una volta per ciclo lunare</b>, nei 3 giorni che iniziano con la luna piena.</div>
+  </div></div>
+</section>
+
+<!-- 9 -->
+<section class="ch" data-id="case" data-part="2" data-title="Le 12 case" hidden>
+  <h2>La casa dà a ogni carta un'abilità</h2>
+  <p class="lead">Al lancio tutte le carte sono in <b>Casa I</b>. Ogni 3 mesi esce una nuova casa con 84 carte: stesse creature, abilità diverse. Ecco quando scatta ogni abilità.</p>
+  <div class="lanes" id="lanes"></div>
+  <p class="note">Nello stesso mazzo puoi mescolare carte di case diverse. Le case valgono più o meno lo stesso: le nuove danno più scelte, non carte più forti.</p>
+</section>
+
+<!-- 10 -->
+<section class="ch" data-id="collezione" data-part="2" data-title="Collezione" hidden>
+  <h2>Come cresce la tua collezione</h2>
+  <div class="split"><div class="col">
+  <div class="box" style="display:flex;flex-direction:column;gap:10px">
+    <b>Il tuo primo cielo</b>
+    <p class="note" style="margin-top:-4px">Alla registrazione inserisci la data di nascita e ricevi 7 creature e un Ascendente: il Sole è nel tuo segno ed è già un mazzo valido. In più, 300 crediti per 3 pacchetti.</p>
+    <div class="deck" id="firstSky" style="grid-template-columns:repeat(4,1fr)"></div>
+  </div>
+  <div class="box" style="display:flex;flex-direction:column;gap:10px">
+    <b>Crediti: circa 50 al giorno</b>
+    <div class="kv">
+      <span>Sfida giocata / vinta (prime 5 del giorno)</span><span>2 / 5</span>
+      <span>3 missioni giornaliere</span><span>5 ciascuna</span>
+      <span>3 missioni settimanali</span><span>25 ciascuna</span>
+      <span>Sfida speciale settimanale</span><span>30</span>
+      <span>Evento mensile</span><span>100</span>
+    </div>
+  </div>
+  </div><div class="col">
+  <b>I pacchetti</b>
+  <div class="packs">
+    <div class="pack"><b>Costellazione</b><span class="p">100</span><span>5 carte della Casa I</span></div>
+    <div class="pack"><b>Nuova Casa</b><span class="p">200</span><span>8 carte dell'ultima casa uscita</span></div>
+    <div class="pack"><b>Zenit</b><span class="p">300</span><span>10 carte della Casa I, più rare</span></div>
+    <div class="pack"><b>Archivio Celeste</b><span class="p">400</span><span>20 carte di una casa precedente</span></div>
+    <div class="pack"><b>Luna Piena</b><span class="p">600</span><span>12 carte, con un Ascendente garantito</span></div>
+  </div>
+  <div class="rule">Ogni pacchetto ha almeno uno slot <b>Stella</b>, che può contenere le carte più rare. Se per 9 Stelle di fila non esce una Leggendaria, la decima la garantisce. I doppioni diventano crediti: Comune 5, Rara 10, Epica 25, Leggendaria 60, Ascendente 100.</div>
+  <div class="box"><b>Scambi</b><p class="note" style="margin-top:4px">Proponi a chiunque uno scambio di sole carte, da 1 a 5 per parte (per esempio 1 contro 3). Avviene solo se l'altro accetta. Il Sole e l'Ascendente del primo cielo non si scambiano.</p></div>
+  </div></div>
+</section>
+<section class="ch endscreen" data-final="1" hidden>
+  <div class="pause finale">
+    <img class="avatar" src="img/za-avatar-ermes-512.webp" alt="Ermes">
+    <h2>Complimenti Astromante, ora sai giocare!</h2>
+  </div>
+</section>
+</main>
+
+<nav class="bottom" aria-label="Capitoli">
+  <div class="wrap">
+    <button id="prevBtn">‹ Indietro</button>
+    <button class="next" id="nextBtn">Avanti ›</button>
+  </div>
+</nav>
+<div id="sheet"></div>
+
+<script>
+const VS='︎';
+const PL=['Sole','Luna','Marte','Giove','Saturno','Mercurio','Venere'];
+const PORD=['Sole','Marte','Luna','Giove','Saturno','Mercurio','Venere'];
+const PB={Sole:[9,8,'Leggendaria','☉'],Marte:[7,4,'Epica','♂'],Luna:[5,6,'Epica','☽'],Giove:[4,2,'Rara','♃'],Saturno:[2,4,'Rara','♄'],Mercurio:[2,0,'Comune','☿'],Venere:[0,2,'Comune','♀']};
+const SG=['Ariete','Toro','Gemelli','Cancro','Leone','Vergine','Bilancia','Scorpione','Sagittario','Capricorno','Acquario','Pesci'];
+const SB={Ariete:[13,7,'Fuoco','♈'],Toro:[8,12,'Terra','♉'],Gemelli:[0,0,'Aria','♊'],Cancro:[7,13,'Acqua','♋'],Leone:[12,8,'Fuoco','♌'],Vergine:[10,10,'Terra','♍'],Bilancia:[0,0,'Aria','♎'],Scorpione:[8,12,'Acqua','♏'],Sagittario:[10,10,'Fuoco','♐'],Capricorno:[12,8,'Terra','♑'],Acquario:[0,0,'Aria','♒'],Pesci:[10,10,'Acqua','♓']};
+const ELS=['Fuoco','Acqua','Terra','Aria'];
+const ELC={Fuoco:'var(--fuoco)',Acqua:'var(--acqua)',Terra:'var(--terra)',Aria:'var(--aria)'};
+const BEATS={Acqua:'Fuoco',Fuoco:'Terra',Terra:'Aria',Aria:'Acqua'};
+const GODS=[['Efesto','Fuoco',2,0,'+2 ATK alle tue creature di Fuoco'],['Poseidone','Acqua',0,3,"+3 DEF alle tue creature d'Acqua"],['Demetra','Terra',1,1,'+1 ATK e +1 DEF alle tue creature di Terra'],['Era','Aria',1,1,"+1 ATK e +1 DEF alle tue creature d'Aria"],['Ade',null,0,0,'+1 PV per ogni creatura avversaria che muore, fino ai tuoi PV iniziali']];
+const HOUSES=[['I','Il sé','+2 DEF',"all'ingresso",'in'],['II','Risorse','Scudo: assorbe i primi 4 danni subiti','al primo colpo ricevuto','hit'],['III','Comunicazione','+2 ATK alla tua creatura successiva','quando muore','die'],['IV','Radici','−4 al danno che arriva ai tuoi PV','quando muore da sola','die'],['V','Gioco','Tira un dado: da +0 a +3 ATK',"all'ingresso",'in'],['VI','Lavoro e salute','+3 ATK','nel suo primo round','first'],['VII','Relazioni','−2 ATK alla creatura avversaria','nel suo primo round','first'],['VIII','Morte e trasformazione','3 danni alla creatura avversaria','quando muore','die'],['IX','Viaggi',"2 danni diretti all'avversario",'se sopravvive al primo round','surv'],['X','Ambizione','+3 ATK','quando hai PV pari o inferiori','game'],['XI','Amicizie','+3 ATK per ogni carta del suo elemento ancora nel mazzo (max +6)',"all'ingresso",'in'],['XII','Inconscio','+3 ATK','dal terzo round della partita','game']];
+const $=id=>document.getElementById(id);
+const g=s=>s+VS;
+const imgOf=(p,s)=>`img/za-${String(PL.indexOf(p)*12+SG.indexOf(s)+1).padStart(3,'0')}-${p.toLowerCase()}-${s.toLowerCase()}.webp`;
+const ascImg=s=>`img/za-asc-${String(SG.indexOf(s)+1).padStart(2,'0')}-ascendente-${s.toLowerCase()}.webp`;
+const godImg=n=>`img/za-dio-${n.toLowerCase()}.webp`;
+const di=e=>(e==='Acqua'||e==='Aria')?"d'"+e:'di '+e;
+const isAria=s=>SB[s][2]==='Aria';
+const printed=(p,s)=>isAria(s)?null:[SB[s][0]+PB[p][0],SB[s][1]+PB[p][1]];
+
+function cardHTML(src,alt,atk,def,opts={}){
+  // carta pulita: nessun elemento sovrapposto all'immagine
+  return `<div class="card${opts.dead?' dead':''}"${opts.id?` id="${opts.id}"`:''}><img src="${src}" alt="${alt}" loading="lazy" decoding="async"></div>`;
+}
+const creature=(p,s,atk,def,opts)=>{const v=printed(p,s);return cardHTML(imgOf(p,s),`${p} in ${s}`,atk??(v&&v[0]),def??(v&&v[1]),opts)};
+function pips(el,pv){el.innerHTML=Array.from({length:10},(_,i)=>`<i class="${i<pv?'':'off'}"></i>`).join('')}
+
+/* ---------- navigazione capitoli ---------- */
+const CH=[...document.querySelectorAll('.ch:not([data-final])')];
+const END=document.querySelector('.endscreen');
+let cur=0,done=false;
+function renderProg(){
+  $('prog').innerHTML=CH.map((c,i)=>(i===5?'<i class="gap"></i>':'')+`<i class="${i<cur||done?'done':i===cur?'now':''}"></i>`).join('');
+  let t='<span class="ph">Parte 1 · Le basi</span>';
+  CH.forEach((c,i)=>{if(i===5)t+='<span class="ph">Parte 2 · Approfondimenti</span>';t+=`<button data-i="${i}" class="${i<cur||done?'done':''}"${i===cur&&!done?' aria-current="step"':''}><span class="n">${i+1}</span>${c.dataset.title}</button>`});
+  $('stoc').innerHTML=t;
+  $('stoc').querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>show(+b.dataset.i));
+}
+function show(i,push=true){
+  cur=Math.max(0,Math.min(CH.length-1,i));done=false;END.hidden=true;$('prevBtn').hidden=false;
+  CH.forEach((c,j)=>c.hidden=j!==cur);
+  const c=CH[cur];
+  $('chTitle').textContent=`${cur+1}. ${c.dataset.title}`;
+  $('partLbl').textContent=c.dataset.part==='1'?'Parte 1 · Le basi':'Parte 2';
+  $('prevBtn').disabled=cur===0;
+  $('nextBtn').textContent=cur===CH.length-1?'Fine':'Avanti ›';
+  renderProg();
+  if(push&&location.hash!=='#'+c.dataset.id){try{history.replaceState(null,'','#'+c.dataset.id)}catch(e){location.hash=c.dataset.id}}
+  window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'});
+}
+$('prevBtn').onclick=()=>show(cur-1);
+$('nextBtn').onclick=()=>{if(done)show(0);else if(cur===CH.length-1)showEnd();else show(cur+1)};
+function showEnd(){
+  done=true;CH.forEach(c=>c.hidden=true);END.hidden=false;
+  $('chTitle').textContent='Fine';
+  $('prevBtn').hidden=true;
+  $('nextBtn').textContent='Ricomincia ↺';
+  renderProg();
+  window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'});
+}
+document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>show(CH.findIndex(c=>c.dataset.id===b.dataset.goto)));
+function openSheet(html,onReady){
+  const sh=$('sheet');sh.innerHTML=`<div class="sheet" role="dialog" aria-modal="true"><div>${html}</div></div>`;
+  const close=()=>{sh.innerHTML=''};
+  sh.querySelector('.sheet').onclick=e=>{if(e.target.classList.contains('sheet'))close()};
+  sh.querySelectorAll('.close').forEach(b=>b.onclick=close);
+  if(onReady)onReady(sh,close);
+}
+$('menuBtn').onclick=()=>{
+  let h='<h3>Capitoli <button class="close">Chiudi</button></h3><div class="toc"><span class="ph">Parte 1 · Le basi</span>';
+  CH.forEach((c,i)=>{if(i===5)h+='<span class="ph">Parte 2 · Approfondimenti</span>';h+=`<button data-i="${i}"><span class="n">${i+1}</span>${c.dataset.title}</button>`});
+  openSheet(h+'</div>',(sh,close)=>sh.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{close();show(+b.dataset.i)}));
+};
+window.addEventListener('hashchange',()=>{const i=CH.findIndex(c=>'#'+c.dataset.id===location.hash);if(i>=0&&i!==cur)show(i,false)});
+
+/* ---------- 1. benvenuto ---------- */
+$('fan').innerHTML=creature('Luna','Pesci')+creature('Sole','Leone')+creature('Giove','Sagittario');
+document.querySelectorAll('.pips[data-pv]').forEach(el=>pips(el,+el.dataset.pv));
+
+/* ---------- 2. carta ---------- */
+const HS=[
+  {x:15.5,y:6.4,t:'Rarità',d:'Dipende dal pianeta. Il Sole è Leggendario; Marte e Luna sono Epici; Giove e Saturno Rari; Mercurio e Venere Comuni.'},
+  {x:50,y:11.5,t:'Casa',d:'Il numero romano è la casa della carta, che le dà un\'abilità. Al lancio tutte le carte sono in Casa I: +2 DEF quando entrano in gioco.'},
+  {x:90,y:6.4,t:'Elemento',d:'L\'icona in alto a destra è l\'elemento del segno: Fuoco per il Leone. Decide il vantaggio negli scontri e quale Dio rafforza la carta.'},
+  {x:16,y:79.5,t:'ATK 19',d:'Il danno che la creatura infligge a ogni colpo. Qui: 12 del Leone + 7 di Marte.'},
+  {x:84,y:79.5,t:'DEF 12',d:'La resistenza della creatura. I colpi la consumano; a 0 la creatura muore. Qui: 8 del Leone + 4 di Marte.'},
+  {x:16,y:85,z:5.5,t:'Pianeta',d:'Il simbolo in basso a sinistra è il pianeta: ♂ Marte. Dà la rarità e un bonus ai valori: +7 ATK e +4 DEF.'},
+  {x:83.5,y:85,z:5.5,t:'Segno',d:'Il simbolo in basso a destra è il segno: ♌ Leone. Decide la forma della creatura e il suo elemento. Il Leone è di Fuoco e vale 12 ATK e 8 DEF: più attacco che difesa.'}
+];
+const ANAT=imgOf('Marte','Leone');
+let hsOn=0;
+function renderAnat(){
+  $('anatCard').innerHTML=creature('Marte','Leone');
+  $('parts').innerHTML=HS.map((h,i)=>`<button aria-pressed="${i===hsOn}" data-h="${i}"><span class="n">${i+1}</span>${h.t.split(' ')[0]}</button>`).join('');
+  $('parts').querySelectorAll('button').forEach(b=>b.onclick=()=>{hsOn=+b.dataset.h;renderAnat()});
+  const h=HS[hsOn],z=h.z||3.2,fx=1/z,fy=1/(z*1.4),cl=v=>Math.max(0,Math.min(1,v));
+  const px=cl((h.x/100-fx/2)/(1-fx))*100,py=cl((h.y/100-fy/2)/(1-fy))*100;
+  $('hsInfo').innerHTML=`<div class="zoomrow"><div class="zoom" role="img" aria-label="Dettaglio: ${h.t}" style="background-image:url('${ANAT}');background-size:${z*100}% auto;background-position:${px}% ${py}%"></div><div><h3><span class="chip" style="color:var(--gold)">${hsOn+1}</span>${h.t}</h3><p class="note" style="margin-top:8px;color:var(--text);font-size:.95rem">${h.d}</p></div></div>`;
+}
+renderAnat();
+
+/* ---------- 3. mazzo ---------- */
+const deck={signs:{Sole:'Leone',Marte:'Leone',Luna:'Pesci',Giove:'Sagittario',Saturno:'Capricorno',Mercurio:'Bilancia',Venere:'Toro'},asc:'Leone',god:'Efesto'};
+function godOf(n){return GODS.find(x=>x[0]===n)}
+function deckBadges(p,s){
+  const b=[],G=godOf(deck.god);
+  if(G[1]&&SB[s][2]===G[1])b.push(deck.god);
+  if(s===deck.asc)b.push('Ascendente');
+  return b;
+}
+function renderDeck(){
+  const cnt=Object.fromEntries(ELS.map(e=>[e,0]));PORD.forEach(p=>cnt[SB[deck.signs[p]][2]]++);
+  const bad=ELS.filter(e=>cnt[e]<1||cnt[e]>3);
+  $('deck').innerHTML=PORD.map(p=>{const s=deck.signs[p];const e=SB[s][2];return `<button class="slot${(cnt[e]>3)?' bad':''}" data-p="${p}">${creature(p,s)}<span class="cap"><b>${p}</b>${g(SB[s][3])} ${s}${deckBadges(p,s).map(x=>`<em class="tag">+ ${x}</em>`).join('')}</span></button>`}).join('')+
+    `<button class="slot" data-asc="1">${cardHTML(ascImg(deck.asc),'Ascendente '+deck.asc)}<span class="cap"><b>Ascendente</b>${g(SB[deck.asc][3])} ${deck.asc}</span></button>`;
+  $('counts').innerHTML=ELS.map(e=>`<span class="cnt${cnt[e]<1||cnt[e]>3?' bad':''}" style="${cnt[e]>=1&&cnt[e]<=3?`color:${ELC[e]}`:''}">${e} ${cnt[e]}</span>`).join('');
+  const v=$('verdict');
+  if(bad.length){v.className='verdict bad';v.textContent='Mazzo non valido: '+bad.map(e=>cnt[e]<1?`manca una carta ${di(e)}`:`troppe carte ${di(e)} (${cnt[e]}, massimo 3)`).join('; ')+'.'}
+  else{v.className='verdict ok';v.textContent='✓ Mazzo valido: 7 pianeti, da 1 a 3 carte per elemento.'}
+  $('deck').querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>pickSign(b.dataset.p));
+  $('deck').querySelector('[data-asc]').onclick=pickAsc;
+  $('deckGods').innerHTML=GODS.map(G=>`<button class="god" aria-pressed="${G[0]===deck.god}" data-g="${G[0]}"><img src="${godImg(G[0])}" alt="">${G[0]}${G[1]?` · <span style="color:${ELC[G[1]]}">${G[1]}</span>`:''}</button>`).join('');
+  $('deckGods').querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{deck.god=b.dataset.g;renderDeck()});
+}
+function pickSign(p){
+  openSheet(`<h3>${p}: scegli il segno <button class="close">Chiudi</button></h3><p class="note">${PB[p][2]} · +${PB[p][0]} ATK, +${PB[p][1]} DEF</p><div class="pick">${SG.map(s=>`<button data-s="${s}" aria-pressed="${deck.signs[p]===s}">${creature(p,s)}<span style="color:${ELC[SB[s][2]]}">${g(SB[s][3])} ${s}</span></button>`).join('')}</div>`,
+    (sh,close)=>sh.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{deck.signs[p]=b.dataset.s;close();renderDeck()}));
+}
+function pickAsc(){
+  openSheet(`<h3>Ascendente <button class="close">Chiudi</button></h3><p class="note">+1 ATK a tutte le carte del mazzo con lo stesso segno.</p><div class="pick">${SG.map(s=>`<button data-s="${s}" aria-pressed="${deck.asc===s}">${cardHTML(ascImg(s),'Ascendente '+s)}<span>${g(SB[s][3])} ${s}</span></button>`).join('')}</div>`,
+    (sh,close)=>sh.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{deck.asc=b.dataset.s;close();renderDeck()}));
+}
+renderDeck();
+
+/* ---------- 4. sfida passo passo ---------- */
+// Esempio con le regole attuali: tutte le carte in Casa I (+2 DEF), senza Fazione e Ascendente.
+const A1={p:'Saturno',s:'Scorpione'},B1={p:'Venere',s:'Toro'},B2={p:'Mercurio',s:'Leone'};
+const STEPS=[
+  {ph:'Preparazione',h:'Le Moire mescolano i mazzi',av:'img/za-avatar-moire-256.webp',t:'Il server mescola le 7 carte di ciascun giocatore: nessuno può scegliere l\'ordine. Entrambi partite da 10 PV.',A:null,B:null,pvA:10,pvB:10},
+  {ph:'Entrata in campo',h:'Ognuno mette in campo la prima carta',t:'In campo, ai valori stampati si aggiungono i bonus. Acqua e Terra sono neutri: nessun vantaggio.',
+    calc:[['Saturno in Scorpione','ATK 10 · DEF 16 + 1 Acqua + 2 Casa I = 19'],['Venere in Toro','ATK 8 · DEF 14 + 2 Casa I = 16']],
+    A:{...A1,a:10,d:19},B:{...B1,a:8,d:16},pvA:10,pvB:10},
+  {ph:'Round 1',h:'Si colpiscono insieme',t:'Ognuno toglie il proprio ATK dalla DEF dell\'altro. Nessuna creatura arriva a 0, quindi si combatte ancora: i danni restano.',
+    calc:[['Saturno in Scorpione','DEF 19 − 8 = 11'],['Venere in Toro','DEF 16 − 10 = 6']],
+    A:{...A1,a:10,d:11,hit:8},B:{...B1,a:8,d:6,hit:10},pvA:10,pvB:10,rule:'Nessuna creatura muore → nuovo round.'},
+  {ph:'Round 2',h:'Muore una sola creatura',t:'Il Toro scende sotto zero e muore; lo Scorpione resta in campo con 3 DEF. Quando muore una sola creatura, il suo giocatore perde PV pari al danno in eccesso.',
+    calc:[['Danno in eccesso','10 − 6 = 4'],['Abilità della Terra','− 1'],['L\'avversario perde','3 PV']],
+    A:{...A1,a:10,d:3,hit:8},B:{...B1,a:8,d:-4,hit:10,dead:true},pvA:10,pvB:7,rule:'Muore una sola creatura → il suo giocatore perde PV.'},
+  {ph:'Nuova carta',h:'Chi ha perso la creatura pesca',t:'L\'avversario mette in campo Mercurio in Leone. L\'Acqua spegne il Fuoco: il tuo Scorpione ha +1 ATK in questo duello.',
+    calc:[['Saturno in Scorpione','ATK 10 + 1 vantaggio = 11 · DEF 3'],['Mercurio in Leone','ATK 14 + 1 Fuoco = 15 · DEF 8 + 2 Casa I = 10']],
+    A:{...A1,a:11,d:3},B:{...B2,a:15,d:10},pvA:10,pvB:7,rule:'Vantaggio di elemento → +1 ATK.'},
+  {ph:'Round 3',h:'Muoiono entrambe',t:'Lo Scorpione toglie 11 e il Leone scende sotto zero; il Leone toglie 15 e lo Scorpione muore. Quando cadono insieme, nessuno perde PV.',
+    calc:[['Mercurio in Leone','DEF 10 − 11 = −1'],['Saturno in Scorpione','DEF 3 − 15 = −12']],
+    A:{...A1,a:11,d:-12,hit:15,dead:true},B:{...B2,a:15,d:-1,hit:11,dead:true},pvA:10,pvB:7,rule:'Muoiono entrambe → nessuno perde PV.'},
+  {ph:'E così via',h:'Si va avanti fino al KO',t:'Ognuno pesca la carta successiva e il ciclo riparte. Sei avanti 10 a 7: vince chi porta l\'altro a 0 PV.',A:null,B:null,pvA:10,pvB:7,end:true}
+];
+let st=0;
+function sideHTML(x){
+  if(!x)return `<div class="card" style="display:grid;place-items:center;background:var(--panel);border:1px dashed var(--line)"><span class="note">mazzo</span></div>`;
+  return creature(x.p,x.s,null,null,{dead:x.dead});
+}
+function renderStep(anim){
+  const S=STEPS[st];
+  $('slotA').innerHTML=sideHTML(S.A);$('slotB').innerHTML=sideHTML(S.B);
+  $('nmA').innerHTML=S.A?`<b>${S.A.p} in ${S.A.s}</b>${S.A.dead?'morta':`ATK ${S.A.a} · DEF ${Math.max(0,S.A.d)}`}`:'';
+  $('nmB').innerHTML=S.B?`<b>${S.B.p} in ${S.B.s}</b>${S.B.dead?'morta':`ATK ${S.B.a} · DEF ${Math.max(0,S.B.d)}`}`:'';
+  pips($('pipsA'),S.pvA);pips($('pipsB'),S.pvB);$('pvA').textContent=S.pvA+' PV';$('pvB').textContent=S.pvB+' PV';
+  $('stepBox').innerHTML=`<span class="phase">${S.ph}</span><h3 style="display:flex;align-items:center;gap:12px">${S.av?`<img class="avatar" src="${S.av}" alt="Le tre Moire" style="width:56px;height:56px;flex:none">`:''}${S.h}</h3><p>${S.t}</p>${S.calc?`<div class="calc">${S.calc.map(r=>`<div class="r"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('')}</div>`:''}${S.rule?`<div class="rule">${S.rule}</div>`:''}`;
+  $('stepDots').innerHTML=STEPS.map((_,i)=>`<i class="${i===st?'on':''}"></i>`).join('');
+  $('stepPrev').disabled=st===0;
+  $('stepNext').textContent=S.end?'Ricomincia ↺':'Avanti ›';
+  if(anim){
+    [['slotA',S.A],['slotB',S.B]].forEach(([id,x])=>{if(x&&x.hit){const c=$(id).querySelector('.card');c.classList.add('hit');const f=document.createElement('span');f.className='float';f.textContent='−'+x.hit+' DEF';$(id.replace('slot','nm')).appendChild(f)}});
+  }
+}
+$('stepNext').onclick=()=>{st=STEPS[st].end?0:st+1;renderStep(true)};
+$('stepPrev').onclick=()=>{st=Math.max(0,st-1);renderStep(false)};
+renderStep(false);
+
+/* ---------- 6. costruisci la carta ---------- */
+const bs={p:'Marte',s:'Leone',h:'I',god:'Efesto',asc:true,vs:'Terra',roll:[10,10],vroll:2};
+const ICON={
+  segno:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-segno)" stroke-width="1.8"><circle r="9"/><circle r="3.5"/><path d="M0 -9V-3.5M0 3.5V9M-9 0H-3.5M3.5 0H9"/></svg>',
+  pianeta:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-pianeta)" stroke-width="1.8"><circle r="5.5"/><ellipse rx="10" ry="3.6" transform="rotate(-20)"/></svg>',
+  elemento:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-elemento)" stroke-width="1.8" stroke-linejoin="round"><path d="M0 -8L8 6H-8Z"/></svg>',
+  fazione:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-fazione)" stroke-width="1.8"><path d="M-9 -7H9M-7 -4H7M-5 -4V6M0 -4V6M5 -4V6M-9 8H9"/></svg>',
+  asc:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-asc)" stroke-width="1.8" stroke-linejoin="round"><path d="M0 -9L7 -2H3V8H-3V-2H-7Z"/></svg>',
+  vant:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-vant)" stroke-width="1.8"><path d="M-7 -6L0 0L7 -6M-7 1L0 7L7 1"/></svg>',
+  casa:'<svg class="ico" viewBox="-12 -12 24 24" fill="none" stroke="var(--c-casa)" stroke-width="1.8" stroke-linejoin="round"><path d="M-9 1L0 -8L9 1M-6 -1V8H6V-1"/></svg>'
+};
+const KC={segno:'var(--c-segno)',pianeta:'var(--c-pianeta)',elemento:'var(--c-elemento)',fazione:'var(--c-fazione)',asc:'var(--c-asc)',vant:'var(--c-vant)',casa:'var(--c-casa)'};
+function seg(id,items,val,set){
+  $(id).innerHTML=items.map(([v,l])=>`<button aria-pressed="${String(v)===String(val)}" data-v="${v}">${l}</button>`).join('');
+  $(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{set(b.dataset.v);renderBuilder()});
+}
+function renderBuilder(){
+  const e=SB[bs.s][2],aria=e==='Aria';
+  const rows=[];
+  const baseA=aria?bs.roll[0]:SB[bs.s][0],baseD=aria?bs.roll[1]:SB[bs.s][1];
+  rows.push({k:'segno',l:`Segno ${bs.s}`,s:aria?'tirato con i dadi':`${e}`,a:baseA,d:baseD,on:true});
+  rows.push({k:'pianeta',l:`Pianeta ${bs.p}`,s:PB[bs.p][2],a:PB[bs.p][0],d:PB[bs.p][1],on:true});
+  rows.push({k:'elemento',l:`Elemento ${e}`,s:e==='Terra'?'−1 al danno che subisci, se muore':aria?'valori tirati coi dadi':'sempre attivo',a:e==='Fuoco'?1:0,d:e==='Acqua'?1:0,on:e==='Fuoco'||e==='Acqua'});
+  const G=godOf(bs.god);const gOn=G[1]===e;
+  rows.push({k:'fazione',l:`Fazione ${bs.god}`,s:bs.god==='Ade'?'agisce sui PV, non sulla carta':gOn?'stesso elemento del Dio':`solo creature ${G[1]==='Acqua'||G[1]==='Aria'?"d'":'di '}${G[1]}`,a:gOn?G[2]:0,d:gOn?G[3]:0,on:gOn});
+  rows.push({k:'asc',l:`Ascendente ${bs.asc?bs.s:'di un altro segno'}`,s:bs.asc?'stesso segno della carta':'non dà bonus a questa carta',a:bs.asc?1:0,d:0,on:bs.asc});
+  const vOn=bs.vs!=='-'&&BEATS[e]===bs.vs;
+  rows.push({k:'vant',l:'Vantaggio',s:bs.vs==='-'?'nessun avversario scelto':vOn?`${e} batte ${bs.vs}`:`${e} non batte ${bs.vs}`,a:vOn?1:0,d:0,on:vOn});
+  const H=HOUSES.find(x=>x[0]===bs.h);let ha=0,hd=0,hon=false;
+  if(bs.h==='I'){hd=2;hon=true}
+  if(bs.h==='V'){ha=bs.vroll;hon=true}
+  rows.push({k:'casa',l:`Casa ${bs.h} · ${H[1]}`,s:(bs.h==='I'||bs.h==='V')?`${H[2]} ${H[3]}`:`${H[2]}, ${H[3]}: non cambia i valori di partenza`,a:ha,d:hd,on:hon});
+  const A=rows.reduce((s,r)=>s+r.a,0),D=rows.reduce((s,r)=>s+r.d,0);
+  const pr=[baseA+PB[bs.p][0],baseD+PB[bs.p][1]];
+  $('bCard').innerHTML=creature(bs.p,bs.s)+(aria?`<button class="chip" id="reroll" style="margin-top:8px;width:100%;justify-content:center">🎲${VS} Tira di nuovo</button>`:'')+`<p class="note" style="margin-top:6px;text-align:center">Stampato sulla carta: ${pr[0]} / ${pr[1]} · In campo: <b style="color:var(--atk)">${A}</b> / <b style="color:var(--def)">${D}</b></p>`;
+  if(aria)$('reroll').onclick=()=>{bs.roll=[roll(),roll()];renderBuilder()};
+  const bar=(k,tot,col)=>`<div><div class="bar-h"><span style="color:${col};font-weight:800">${k}</span><b>${tot}</b></div><div class="stack" role="img" aria-label="${k} ${tot}">${rows.filter(r=>r[k.toLowerCase()==='atk'?'a':'d']>0).map(r=>`<i style="width:${(k==='ATK'?r.a:r.d)/40*100}%;background:${KC[r.k]}"></i>`).join('')}</div></div>`;
+  $('bBars').innerHTML=bar('ATK',A,'var(--atk)')+bar('DEF',D,'var(--def)')+`<p class="note">Ogni colore è un bonus: l'elenco sotto dice da dove arriva.</p>`;
+  $('bList').innerHTML=rows.map(r=>`<li class="${r.on?'':'off'}">${ICON[r.k]}<div>${r.l}<small>${r.s}</small></div><span class="v">${r.a?`<span style="color:var(--atk)">+${r.a} ATK</span>`:''}${r.a&&r.d?' ':''}${r.d?`<span style="color:var(--def)">+${r.d} DEF</span>`:''}${!r.a&&!r.d?'—':''}</span></li>`).join('');
+  seg('bPlanet',PORD.map(p=>[p,g(PB[p][3])+' '+p]),bs.p,v=>bs.p=v);
+  seg('bSign',SG.map(s=>[s,`<span style="color:${ELC[SB[s][2]]}">${g(SB[s][3])}</span> ${s}`]),bs.s,v=>{bs.s=v;if(isAria(v))bs.roll=[roll(),roll()]});
+  seg('bGod',GODS.map(G=>[G[0],G[0]]),bs.god,v=>bs.god=v);
+  seg('bAsc',[[1,'Stesso segno'],[0,'Altro segno']],bs.asc?1:0,v=>bs.asc=v==='1');
+  seg('bVs',[['-','Nessuno'],...ELS.map(x=>[x,`<span style="color:${ELC[x]}">${x}</span>`])],bs.vs,v=>bs.vs=v);
+}
+function roll(){return (1+Math.floor(Math.random()*4)+1+Math.floor(Math.random()*4))*2}
+$('bHouse').innerHTML=HOUSES.map(H=>`<option value="${H[0]}">Casa ${H[0]} · ${H[1]}</option>`).join('');
+$('bHouse').onchange=e=>{bs.h=e.target.value;if(bs.h==='V')bs.vroll=Math.floor(Math.random()*4);renderBuilder()};
+renderBuilder();
+
+/* ---------- 7. dadi ---------- */
+
+/* ---------- 8. fazioni ---------- */
+let godSel='Efesto';
+function renderGods(){
+  $('godCards').innerHTML=GODS.map(G=>`<button aria-pressed="${G[0]===godSel}" data-g="${G[0]}" aria-label="${G[0]}">${cardHTML(godImg(G[0]),G[0])}</button>`).join('');
+  $('godCards').querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{godSel=b.dataset.g;renderGods()});
+  const G=godOf(godSel);
+  $('godInfo').innerHTML=`<h3>${G[0]}${G[1]?` · <span style="color:${ELC[G[1]]}">${G[1]}</span>`:' · nessun elemento'}</h3><p style="margin-top:6px">${G[4]}.</p><p class="note" style="margin-top:6px">${G[0]==='Ade'?'Ade regna sui morti: è l\'unico Dio che agisce sui PV. Arriva con la fase 2.':`Conviene avere nel mazzo qualche carta ${G[1]==='Acqua'||G[1]==='Aria'?"d'":'di '}${G[1]}, ma non è obbligatorio.`}</p>`;
+}
+renderGods();
+
+/* ---------- 9. case ---------- */
+const LANES=[['in',"All'ingresso in gioco"],['first','Nel suo primo round'],['hit','Al primo colpo ricevuto'],['surv','Se sopravvive al primo round'],['game','Durante la partita'],['die','Quando muore']];
+$('lanes').innerHTML=LANES.map(([k,t])=>`<div class="lane"><span class="dot"></span><div><h3>${t}</h3><div class="houses">${HOUSES.filter(H=>H[4]===k).map(H=>`<div class="house${H[0]==='I'?' launch':''}"><span class="rn">${H[0]}</span><div><b>${H[1]}${H[0]==='I'?' · al lancio':''}</b><span>${H[2]}${k==='game'?` (${H[3]})`:''}</span></div></div>`).join('')}</div></div></div>`).join('');
+
+/* ---------- 10. primo cielo ---------- */
+$('firstSky').innerHTML=[['Sole','Leone'],['Marte','Toro'],['Luna','Pesci'],['Giove','Gemelli'],['Saturno','Capricorno'],['Mercurio','Sagittario'],['Venere','Scorpione']].map(([p,s])=>`<div class="slot">${creature(p,s)}<span class="cap"><b>${p}</b>${s}</span></div>`).join('')+`<div class="slot">${cardHTML(ascImg('Toro'),'Ascendente Toro')}<span class="cap"><b>Ascendente</b>Toro</span></div>`;
+
+/* avvio */
+const start=CH.findIndex(c=>'#'+c.dataset.id===location.hash);
+show(start>=0?start:0,false);
+</script>
+
+</body></html>
