@@ -384,7 +384,7 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
       if (e.pointerType !== 'mouse') reset();
       const tap = down && Math.hypot(e.clientX - down.x, e.clientY - down.y) < 10 && Date.now() - down.t < 400;
       down = null;
-      if (tap && el.dataset.zoom) open(el.dataset.zoom, el.querySelector('img').alt, el.classList.contains('pack'));
+      if (tap && el.dataset.zoom) open(el.dataset.zoom, el.querySelector('img').alt, el.classList.contains('pack'), el);
     }});
   }}
   document.querySelectorAll('.tilt').forEach(bind);
@@ -395,8 +395,9 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
   const lbHint = document.getElementById('lbHint');
   let flip = 0;
   const setFlip = d => {{ flip += d; lbCard.style.setProperty('--flip', flip + 'deg'); if (lbHint) lbHint.hidden = true; }};
-  function open(src, alt, wide) {{
-    last = document.activeElement;
+  let keepY = 0;
+  function open(src, alt, wide, trigger) {{
+    last = trigger || document.activeElement; keepY = window.scrollY;
     lbImg.src = src; lbImg.alt = alt;
     lbCard.classList.toggle('pack', wide); lbCard.classList.toggle('wide', wide);
     // solo le carte di fronte (segni, Ascendenti, dei) si girano: dorsi e pacchetti no
@@ -404,7 +405,7 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
     lbCard.classList.toggle('can-flip', canFlip); lbHint.hidden = !canFlip;
     flip = 0; lbCard.style.transition = 'none'; lbCard.style.setProperty('--flip', '0deg');
     requestAnimationFrame(() => {{ lbCard.style.transition = ''; }});
-    lb.hidden = false; lb.querySelector('.lbx').focus();
+    lb.hidden = false; lb.querySelector('.lbx').focus({{ preventScroll: true }});
   }}
   // swipe orizzontale (dito o mouse): la carta gira di 180 gradi nella direzione del gesto
   let sw = null;
@@ -419,11 +420,11 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
     if (lb.hidden || !lbCard.classList.contains('can-flip')) return;
     if (e.key === 'ArrowRight') setFlip(180); else if (e.key === 'ArrowLeft') setFlip(-180);
   }});
-  function close() {{ lb.hidden = true; lbImg.src = ''; if (last) last.focus(); }}
+  function close() {{ lb.hidden = true; lbImg.src = ''; if (last) last.focus({{ preventScroll: true }}); window.scrollTo(0, keepY); }}
   lb.addEventListener('click', e => {{ if (e.target === lb || e.target.closest('.lbx')) close(); }});
   document.addEventListener('keydown', e => {{ if (e.key === 'Escape' && !lb.hidden) close(); }});
   document.querySelectorAll('.tilt[data-zoom]').forEach(b => b.addEventListener('keydown', e => {{
-    if (e.key === 'Enter' || e.key === ' ') {{ e.preventDefault(); open(b.dataset.zoom, b.querySelector('img').alt, b.classList.contains('pack')); }}
+    if (e.key === 'Enter' || e.key === ' ') {{ e.preventDefault(); open(b.dataset.zoom, b.querySelector('img').alt, b.classList.contains('pack'), b); }}
   }}));
 
   // schede per rarità
