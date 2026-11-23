@@ -64,7 +64,8 @@ header .zl-brand>a:first-child img{height:48px!important}
 }
 </style>
 </helmet>""", 1)
-    t = t.replace("</header>", menu("regolamento.html", "collezione.html", "#iscriviti", "#") + "\n</header>", 1)
+    # niente onclick testuali nella landing: React li rifiuta (errore #231); il menu si chiude con uno script esterno
+    t = t.replace("</header>", (menu("regolamento.html", "collezione.html", "#iscriviti", "#") + "\n</header>").replace(" onclick=\"this.closest('details').open=false\"", ""), 1)
     assert t.count("za-menu-panel") >= 2
     L[ti] = m.group(1) + json.dumps(t).replace("</", "<\\u002F") + m.group(3)
     p.write_text("\n".join(L), encoding="utf-8"); print("index ok")
