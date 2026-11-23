@@ -214,6 +214,17 @@ footer a{{color:var(--gold-s);text-decoration:none;font:700 13px Cinzel,serif;le
 .lb[hidden]{{display:none}}
 .lb .tilt{{width:min(420px,84vw);touch-action:none;cursor:default}}
 .lb .tilt.wide{{width:min(460px,86vw)}}
+.flipper{{position:relative;display:block;transform-style:preserve-3d;transform:rotateY(var(--flip,0deg));transition:transform .65s cubic-bezier(.3,.7,.2,1)}}
+.flipper .face{{display:block;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:inherit}}
+.flipper .face img{{display:block;width:100%;height:auto;border-radius:inherit}}
+.flipper .face.back{{position:absolute;inset:0;transform:rotateY(180deg)}}
+.flipper .face.back img{{height:100%}}
+.lb .tilt:not(.can-flip) .face.back{{display:none}}
+.lb .tilt.can-flip{{cursor:grab}}
+.lbhint{{position:absolute;left:0;right:0;bottom:calc(24px + env(safe-area-inset-bottom,0px));margin:0;text-align:center;font:700 13px Nunito,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-s);pointer-events:none}}
+.lbhint span{{display:inline-block;animation:nudge 1.8s ease-in-out infinite}}
+@keyframes nudge{{0%,100%{{transform:translateX(0)}}50%{{transform:translateX(6px)}}}}
+@media (prefers-reduced-motion:reduce){{.flipper{{transition:none}}.lbhint span{{animation:none}}}}
 .lbx{{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--gold);background:var(--bg2);color:var(--gold-l);font-size:22px;cursor:pointer}}
 @keyframes fade{{from{{opacity:0}}to{{opacity:1}}}}
 
@@ -335,7 +346,8 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Carta ingrandita">
 <button class="lbx" type="button" aria-label="Chiudi">✕</button>
-<span class="tilt" id="lbCard" data-free><span class="tilt-in"><img src="" alt=""></span></span>
+<span class="tilt" id="lbCard" data-free><span class="tilt-in"><span class="flipper"><span class="face front"><img src="" alt=""></span><span class="face back"><img src="img/dorsi/dorso-standard.webp" alt="Dorso standard"></span></span></span></span>
+<p class="lbhint" id="lbHint" hidden><span>‹ Scorri per girare la carta ›</span></p>
 </div>
 
 <script>
@@ -380,12 +392,33 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
   // ingrandimento
   const lb = document.getElementById('lb'), lbCard = document.getElementById('lbCard'), lbImg = lbCard.querySelector('img');
   let last = null;
+  const lbHint = document.getElementById('lbHint');
+  let flip = 0;
+  const setFlip = d => {{ flip += d; lbCard.style.setProperty('--flip', flip + 'deg'); if (lbHint) lbHint.hidden = true; }};
   function open(src, alt, wide) {{
     last = document.activeElement;
     lbImg.src = src; lbImg.alt = alt;
     lbCard.classList.toggle('pack', wide); lbCard.classList.toggle('wide', wide);
+    // solo le carte di fronte (segni, Ascendenti, dei) si girano: dorsi e pacchetti no
+    const canFlip = !/\\/(dorsi|pacchetti)\\//.test(src);
+    lbCard.classList.toggle('can-flip', canFlip); lbHint.hidden = !canFlip;
+    flip = 0; lbCard.style.transition = 'none'; lbCard.style.setProperty('--flip', '0deg');
+    requestAnimationFrame(() => {{ lbCard.style.transition = ''; }});
     lb.hidden = false; lb.querySelector('.lbx').focus();
   }}
+  // swipe orizzontale (dito o mouse): la carta gira di 180 gradi nella direzione del gesto
+  let sw = null;
+  lbCard.addEventListener('pointerdown', e => {{ if (lbCard.classList.contains('can-flip')) sw = {{ x: e.clientX, y: e.clientY }}; }});
+  lbCard.addEventListener('pointerup', e => {{
+    if (!sw) return;
+    const dx = e.clientX - sw.x, dy = e.clientY - sw.y; sw = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) setFlip(dx > 0 ? 180 : -180);
+  }});
+  lbCard.addEventListener('pointercancel', () => {{ sw = null; }});
+  document.addEventListener('keydown', e => {{
+    if (lb.hidden || !lbCard.classList.contains('can-flip')) return;
+    if (e.key === 'ArrowRight') setFlip(180); else if (e.key === 'ArrowLeft') setFlip(-180);
+  }});
   function close() {{ lb.hidden = true; lbImg.src = ''; if (last) last.focus(); }}
   lb.addEventListener('click', e => {{ if (e.target === lb || e.target.closest('.lbx')) close(); }});
   document.addEventListener('keydown', e => {{ if (e.key === 'Escape' && !lb.hidden) close(); }});
