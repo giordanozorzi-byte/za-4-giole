@@ -18,8 +18,13 @@ def card_src(p, s):
 def asc_src(s):
     return f"img/za-asc-{SG.index(s) + 1:02d}-ascendente-{s.lower()}.webp"
 
+def zoom_src(src):
+    # anteprima ad alta risoluzione: carte e dorsi in img/hd (1000x1400); i pacchetti restano come sono
+    if "/pacchetti/" in src: return src
+    return "img/hd/" + src.split("/")[-1]
+
 def tilt_img(src, alt, cls="", extra=""):
-    return (f'<button class="tilt {cls}" type="button" data-zoom="{src}" aria-label="Ingrandisci {alt}"{extra}>'
+    return (f'<button class="tilt {cls}" type="button" data-zoom="{zoom_src(src)}" aria-label="Ingrandisci {alt}"{extra}>'
             f'<span class="tilt-in"><img src="{src}" alt="{alt}" loading="lazy" decoding="async"></span></button>')
 
 def grid(items):
@@ -346,7 +351,7 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Carta ingrandita">
 <button class="lbx" type="button" aria-label="Chiudi">✕</button>
-<span class="tilt" id="lbCard" data-free><span class="tilt-in"><span class="flipper"><span class="face front"><img src="" alt=""></span><span class="face back"><img src="img/dorsi/dorso-standard.webp" alt="Dorso standard"></span></span></span></span>
+<span class="tilt" id="lbCard" data-free><span class="tilt-in"><span class="flipper"><span class="face front"><img src="" alt=""></span><span class="face back"><img src="img/hd/dorso-standard.webp" alt="Dorso standard"></span></span></span></span>
 <p class="lbhint" id="lbHint" hidden><span>‹ Scorri per girare la carta ›</span></p>
 </div>
 
@@ -401,7 +406,7 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
     lbImg.src = src; lbImg.alt = alt;
     lbCard.classList.toggle('pack', wide); lbCard.classList.toggle('wide', wide);
     // solo le carte di fronte (segni, Ascendenti, dei) si girano: dorsi e pacchetti no
-    const canFlip = !/\\/(dorsi|pacchetti)\\//.test(src);
+    const canFlip = !/(dorso-|\\/pacchetti\\/)/.test(src);
     lbCard.classList.toggle('can-flip', canFlip); lbHint.hidden = !canFlip;
     flip = 0; lbCard.style.transition = 'none'; lbCard.style.setProperty('--flip', '0deg');
     requestAnimationFrame(() => {{ lbCard.style.transition = ''; }});
