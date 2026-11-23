@@ -225,6 +225,8 @@ footer a{{color:var(--gold-s);text-decoration:none;font:700 13px Cinzel,serif;le
 .flipper .face.back{{position:absolute;inset:0;transform:rotateY(180deg)}}
 .flipper .face.back img{{height:100%}}
 .lb .tilt:not(.can-flip) .face.back{{display:none}}
+.lb .tilt:not(.on) .tilt-in{{transform:none}}
+.lb .tilt.za-rest .flipper{{transform:none;transition:none}}
 .lb .tilt.can-flip{{cursor:grab}}
 .lbhint{{position:absolute;left:0;right:0;bottom:calc(24px + env(safe-area-inset-bottom,0px));margin:0;text-align:center;font:700 13px Nunito,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-s);pointer-events:none}}
 .lbhint span{{display:inline-block;animation:nudge 1.8s ease-in-out infinite}}
@@ -399,7 +401,8 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
   let last = null;
   const lbHint = document.getElementById('lbHint');
   let flip = 0;
-  const setFlip = d => {{ flip += d; lbCard.style.setProperty('--flip', flip + 'deg'); if (lbHint) lbHint.hidden = true; }};
+  const setFlip = d => {{ lbCard.classList.remove('za-rest'); void lbCard.offsetWidth; flip += d; lbCard.style.setProperty('--flip', flip + 'deg'); if (lbHint) lbHint.hidden = true; }};
+  lbCard.querySelector('.flipper').addEventListener('transitionend', () => {{ if (flip % 360 === 0) lbCard.classList.add('za-rest'); }});
   let keepY = 0;
   function open(src, alt, wide, trigger) {{
     last = trigger || document.activeElement; keepY = window.scrollY;
@@ -408,7 +411,7 @@ Zodiax Arena · gioco di carte collezionabili tra astrologia e mitologia greca
     // solo le carte di fronte (segni, Ascendenti, dei) si girano: dorsi e pacchetti no
     const canFlip = !/(dorso-|\\/pacchetti\\/)/.test(src);
     lbCard.classList.toggle('can-flip', canFlip); lbHint.hidden = !canFlip;
-    flip = 0; lbCard.style.transition = 'none'; lbCard.style.setProperty('--flip', '0deg');
+    flip = 0; lbCard.classList.add('za-rest'); lbCard.style.transition = 'none'; lbCard.style.setProperty('--flip', '0deg');
     requestAnimationFrame(() => {{ lbCard.style.transition = ''; }});
     lb.hidden = false; lb.querySelector('.lbx').focus({{ preventScroll: true }});
   }}
